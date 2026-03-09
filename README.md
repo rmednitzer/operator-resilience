@@ -35,6 +35,7 @@ Current canonical registers:
 - `data/registers/h-state-event-register.yaml` — H-state assessment events
 - `data/registers/duress-event-register.yaml` — Duress events (real and exercise)
 - `data/registers/exercise-register.yaml` — Exercise execution records
+- `data/registers/review-register.yaml` — Post-event review records
 
 ## Design principles
 
@@ -50,9 +51,9 @@ Current canonical registers:
 
 This repository is standalone. It does not depend on any specific platform, safety, or autonomous-system governance framework. It integrates with adjacent governance layers through defined interfaces:
 
-- **Evidence pipeline:** Decision logs, OADC trigger events, exercise records, and post-event reviews produce evidence artifacts. These integrate with whatever evidence store your environment uses (WORM storage, signed artifacts, hash-chained audit logs). Retention tiers are defined in the SKILL.md and policy; the transport mechanism is environment-specific.
+- **Evidence pipeline:** Decision logs, OADC trigger events, exercise records, and post-event reviews produce evidence artifacts. These integrate with whatever evidence store your environment uses (WORM storage, signed artifacts, hash-chained audit logs). Retention tiers are defined in the governance policy; the transport mechanism is environment-specific.
 - **Hazard analysis:** Operator UCAs (unsafe control actions) from the STPA integration section feed into whatever hazard register your environment maintains. The STPA UCA template is self-contained.
-- **Authority models:** Where the operator controls a system with a formal authority hierarchy (authority levels, delegation contracts, connectivity-state machines), the OADC links to it through the autonomous-system bridge (SKILL.md §E.5). The mapping is defined per deployment, not hard-coded.
+- **Authority models:** Where the operator controls a system with a formal authority hierarchy (authority levels, delegation contracts, connectivity-state machines), the OADC links to it through the autonomous-system bridge. The mapping is defined per deployment, not hard-coded.
 - **IAM enforcement:** OADC constraints (two-person approval, session restrictions, time-bounded access) are technically enforced through whatever IAM system your environment uses. This repo defines the contract; IAM enforces it.
 
 ## Getting started

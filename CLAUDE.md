@@ -2,7 +2,7 @@
 
 ## Project overview
 
-This repository contains governance artifacts for operator assurance under adversarial, degraded, and high-stress conditions. It is a governance-as-code repository, not an application codebase. The primary deliverables are Markdown documents, JSON Schemas, canonical YAML registers, and validation scripts.
+This repository contains governance artifacts for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions. It is a governance-as-code repository, not an application codebase. The primary deliverables are Markdown documents, JSON Schemas, canonical YAML registers, and validation scripts.
 
 **Owner:** Roman Mednitzer
 **License:** MIT
