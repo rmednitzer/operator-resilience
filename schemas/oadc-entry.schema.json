@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "oadc-entry.schema.json",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^OADC-\\d{3}$" },
+    "object_type": { "const": "oadc_instance" },
+    "environment": { "type": "string" },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "max_duty_hours": { "type": "number" },
+        "max_incident_hours": { "type": "number" },
+        "min_review_threshold_seconds": { "type": "number" },
+        "passive_monitoring_interval_minutes": { "type": "number" },
+        "circadian_window_start": { "type": "string" },
+        "circadian_window_end": { "type": "string" }
+      },
+      "required": ["max_duty_hours", "max_incident_hours"]
+    }
+  },
+  "required": ["id", "object_type", "environment", "parameters"]
+}

@@ -1,0 +1,92 @@
+version: 1
+artifacts:
+  - path: README.md
+    artifact_type: normative
+    scope: repository-overview
+    status: active
+  - path: CLAUDE.md
+    artifact_type: normative
+    scope: ai-assistant-guide
+    status: active
+  - path: CONTRIBUTING.md
+    artifact_type: normative
+    scope: contribution-and-change-management
+    status: active
+  - path: LICENSE
+    artifact_type: normative
+    scope: license
+    status: active
+
+  - path: policies/POL-OR-01-operator-governance.md
+    artifact_type: normative
+    scope: operator-governance-policy
+    status: draft
+
+  - path: docs/contracts/oadc.md
+    artifact_type: normative
+    scope: operator-authority-degradation-contract
+    status: draft
+
+  - path: schemas/common.schema.json
+    artifact_type: normative
+    scope: common-register-entry-schema
+    status: active
+  - path: schemas/oadc-entry.schema.json
+    artifact_type: normative
+    scope: oadc-entry-schema
+    status: active
+  - path: schemas/h-state-event.schema.json
+    artifact_type: normative
+    scope: h-state-event-schema
+    status: active
+  - path: schemas/exercise-record.schema.json
+    artifact_type: normative
+    scope: exercise-record-schema
+    status: active
+
+  - path: templates/decision-log/TEMPLATE-decision-log-entry.md
+    artifact_type: approved-pattern
+    scope: decision-log-template
+    status: active
+  - path: templates/oadc/TEMPLATE-oadc-instance.md
+    artifact_type: approved-pattern
+    scope: oadc-instance-template
+    status: active
+  - path: templates/duress-protocol/TEMPLATE-duress-protocol.md
+    artifact_type: approved-pattern
+    scope: duress-protocol-template
+    status: active
+  - path: templates/exercise/TEMPLATE-exercise-record.md
+    artifact_type: approved-pattern
+    scope: exercise-record-template
+    status: active
+  - path: templates/return-to-duty/TEMPLATE-return-to-duty.md
+    artifact_type: approved-pattern
+    scope: return-to-duty-template
+    status: active
+  - path: templates/team-contract/TEMPLATE-shared-operating-contract.md
+    artifact_type: approved-pattern
+    scope: shared-operating-contract-template
+    status: active
+
+  - path: checklists/pre-incident-readiness.md
+    artifact_type: approved-pattern
+    scope: pre-incident-readiness-checklist
+    status: active
+  - path: checklists/post-event-review.md
+    artifact_type: approved-pattern
+    scope: post-event-review-checklist
+    status: active
+
+  - path: scripts/validate_repo.py
+    artifact_type: normative
+    scope: repository-validation
+    status: active
+  - path: scripts/generate_register_views.py
+    artifact_type: normative
+    scope: register-renderer
+    status: active
+  - path: Makefile
+    artifact_type: normative
+    scope: build-system
+    status: active

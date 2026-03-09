@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "h-state-event.schema.json",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^HSE-\\d{3}$" },
+    "object_type": { "const": "h_state_event" },
+    "operator_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "from_state": { "type": "string", "enum": ["H-0", "H-1", "H-2", "H-3", "H-4"] },
+    "to_state": { "type": "string", "enum": ["H-0", "H-1", "H-2", "H-3", "H-4"] },
+    "trigger": { "type": "string" },
+    "assessor": { "type": "string" },
+    "assessment_method": { "type": "string", "enum": ["self-report", "peer-observation", "automated", "supervisor-assessment"] }
+  },
+  "required": ["id", "object_type", "operator_id", "timestamp", "to_state", "trigger", "assessment_method"]
+}

@@ -1,0 +1,16 @@
+# Canonical OADC register — operator authority degradation contract instances
+# Edit this file, not registers/oadc-register.md
+entries: []
+# Example entry:
+# - id: OADC-001
+#   object_type: oadc_instance
+#   status: draft
+#   environment: "Production SRE on-call"
+#   owner: "[Name]"
+#   parameters:
+#     max_duty_hours: 12
+#     max_incident_hours: 6
+#     min_review_threshold_seconds: 120
+#     passive_monitoring_interval_minutes: 30
+#     circadian_window_start: "02:00"
+#     circadian_window_end: "06:00"
