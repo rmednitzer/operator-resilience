@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "review-record.schema.json",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^REV-\\d{3}$" },
+    "object_type": { "const": "review_record" },
+    "event_type": { "type": "string", "enum": ["oadc-trigger", "duress-event", "social-engineering-attempt", "break-glass", "h-state-h3", "h-state-h4", "team-degradation"] },
+    "event_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "review_lead": { "type": "string" },
+    "event_ref": { "type": "string" },
+    "corrective_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string" },
+          "owner": { "type": "string" },
+          "deadline": { "type": "string", "format": "date" }
+        },
+        "required": ["action", "owner", "deadline"]
+      }
+    },
+    "parameter_adjustments": { "type": "boolean" },
+    "sign_off": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": { "type": "string" },
+          "name": { "type": "string" },
+          "date": { "type": "string", "format": "date" }
+        },
+        "required": ["role", "name", "date"]
+      }
+    }
+  },
+  "required": ["id", "object_type", "event_type", "event_date", "review_date", "review_lead"]
+}
