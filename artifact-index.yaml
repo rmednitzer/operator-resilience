@@ -43,6 +43,14 @@ artifacts:
     artifact_type: normative
     scope: exercise-record-schema
     status: active
+  - path: schemas/duress-event.schema.json
+    artifact_type: normative
+    scope: duress-event-schema
+    status: active
+  - path: schemas/review-record.schema.json
+    artifact_type: normative
+    scope: review-record-schema
+    status: active
 
   - path: templates/decision-log/TEMPLATE-decision-log-entry.md
     artifact_type: approved-pattern
