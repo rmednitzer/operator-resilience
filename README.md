@@ -1,6 +1,6 @@
 # operator-resilience
 
-Governance-as-code for operator assurance under adversarial, degraded, and high-stress conditions.
+Governance-as-code for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions.
 
 ## Purpose
 
