@@ -4,7 +4,7 @@ Governance-as-code for operator assurance under adversarial, degraded, and high-
 
 ## Purpose
 
-Operators — human controllers of IT, OT, autonomous, and safety-critical systems — are safety-critical components that can fail, be attacked, or degrade. Standard sociotechnical design assumes the operator is acting in good faith, with accurate information, under manageable cognitive load. This repository governs the conditions where those assumptions break: the operator's information is wrong, stale, or adversarially manipulated; the operator is coerced, deceived, or under psychological pressure; cognitive capacity has degraded below the threshold the control structure assumes; the operating contract is contested, violated, or attacked; the operator is acting against organizational interests; or the team's collective cognition has failed.
+Operators — human controllers of IT, OT, autonomous, and safety-critical systems — face the same pressures that degrade any safety-critical function: they can be targeted, misled, exhausted, or coerced. Standard sociotechnical design assumes the operator is acting in good faith, with accurate information, under manageable cognitive load. This repository governs the conditions where those assumptions break: the operator's information is wrong, stale, or adversarially manipulated; the operator is coerced, deceived, or under psychological pressure; cognitive capacity has degraded below the threshold the control structure assumes; the operating contract is contested, violated, or attacked; the operator is acting against organizational interests; or the team's collective cognition has failed.
 
 The core problem is the operator–authority–auditability triangle. High operator authority enables fast response but expands the unsupervised decision space. Tight procedural controls reduce error but slow response and create brittleness. Continuous auditability enables accountability but adds cognitive load. This repository treats the operator as a governed boundary — with formal authority contracts, epistemic integrity requirements, degradation modes, and evidence capture — analogous to how cyber-physical systems treat their physical control boundaries.
 
@@ -43,7 +43,7 @@ Current canonical registers:
 3. **Hostile is the default assumption.**
 4. **Degrade gracefully, halt safely.**
 5. **Auditability survives the event.**
-6. **The operator is a safety-critical component.**
+6. **Operator performance is a safety-critical function.**
 7. **Exercise or it does not exist.**
 
 ## Integration interfaces
