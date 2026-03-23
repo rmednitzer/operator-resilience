@@ -37,15 +37,22 @@ All operators in roles where their decisions can cause or fail to prevent a high
 
 ## Compliance mapping
 
-| Requirement | Source |
-|-------------|--------|
-| Human oversight of high-risk AI | EU AI Act Art. 14 |
-| Incident handling and response | NIS2 Art. 21(2)(b) |
-| Crisis management | NIS2 Art. 21(2)(c) |
-| Cybersecurity awareness and training | NIS2 Art. 21(2)(g) |
-| Risk management and security policies | NIS2 Art. 21(2)(a) |
-| Accountability and logging | MIL-STD-882E Task 401 |
-| Meaningful human control | DoD Directive 3000.09 |
+Indicative mapping — applicability depends on sector, entity classification, and deployment context. See `docs/integration/regulatory-cross-reference.md` for detailed analysis with article-level traceability.
+
+| Requirement | Source | OADC alignment |
+|-------------|--------|----------------|
+| Human oversight of high-risk AI systems | EU AI Act Art. 14 | OADC §§1–4; safe-state §6 |
+| Deployer: assign oversight to persons with competence, training, authority | EU AI Act Art. 26(2) | OADC §§2–3; roles §30–36 |
+| Risk management system (continuous, iterative) | EU AI Act Art. 9 | Policy stmt 1–2; exercise §10 |
+| Policies on risk analysis and information system security | NIS2 Art. 21(2)(a) | Policy stmt 1–4 |
+| Incident handling | NIS2 Art. 21(2)(b) | Policy stmt 7–9 |
+| Business continuity and crisis management | NIS2 Art. 21(2)(c) | Safe-state §6; handoff §7 |
+| Basic cyber hygiene practices and cybersecurity training | NIS2 Art. 21(2)(g) | Exercise §10; duress §5 |
+| Human resources security, access control policies | NIS2 Art. 21(2)(i) | OADC system enforcement §44–49 |
+| Resilience measures: employee security management, personnel in critical functions | CER Art. 13(1)(e) | Roles §30–36; OADC §§1–3 |
+| Background checks for personnel exercising critical functions | CER Art. 14 | Conditional — see cross-ref |
+| Accountability and logging | MIL-STD-882E Task 401 | Policy stmt 3, 8 |
+| Meaningful human control | DoD Directive 3000.09 | OADC §§1–4 |
 
 ## Review log
 
