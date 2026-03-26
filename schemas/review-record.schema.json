@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "review-record.schema.json",
   "type": "object",
+  "allOf": [{ "$ref": "common.schema.json" }],
   "properties": {
-    "id": { "type": "string", "pattern": "^REV-\\d{3}$" },
+    "id": { "type": "string", "pattern": "^REV-\\d{3,}$" },
     "object_type": { "const": "review_record" },
     "event_type": { "type": "string", "enum": ["oadc-trigger", "duress-event", "social-engineering-attempt", "break-glass", "h-state-h3", "h-state-h4", "team-degradation"] },
     "event_date": { "type": "string", "format": "date" },
@@ -36,5 +37,6 @@
       }
     }
   },
-  "required": ["id", "object_type", "event_type", "event_date", "review_date", "review_lead"]
+  "required": ["id", "object_type", "event_type", "event_date", "review_date", "review_lead"],
+  "unevaluatedProperties": false
 }
