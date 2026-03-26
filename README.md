@@ -46,10 +46,19 @@ Current canonical registers:
 5. **Auditability survives the event.**
 6. **Operator performance is a safety-critical function.**
 7. **Exercise or it does not exist.**
+8. **The schema is authoritative.** Human-readable tables are rendered outputs, not the primary data plane.
+
+## Companion repositories
+
+This repository is standalone and environment-agnostic but complements the following governance repos by the same owner:
+
+- [`autonomous-platform-assurance`](https://github.com/rmednitzer/autonomous-platform-assurance): platform authority hierarchy (AL-0 to AL-8), CDIL operation, hostile-environment security, disconnected key management, and mission safety. The OADC governs the operator side of the authority boundary; AL governs the platform side.
+- [`platform-assurance`](https://github.com/rmednitzer/platform-assurance): ground-side IT, evidence pipeline, IAM, observability, NIS2 and organisational controls.
+- [`cps-assurance`](https://github.com/rmednitzer/cps-assurance): functional safety lifecycle, OT and ICS security, product conformity, and EU product regulation overlays.
 
 ## Integration interfaces
 
-This repository is standalone. It does not depend on any specific platform, safety, or autonomous-system governance framework. It integrates with adjacent governance layers through defined interfaces:
+This repository integrates with adjacent governance layers through defined interfaces:
 
 - **Evidence pipeline:** Decision logs, OADC trigger events, exercise records, and post-event reviews produce evidence artifacts. These integrate with whatever evidence store your environment uses (WORM storage, signed artifacts, hash-chained audit logs). Retention tiers are defined in the governance policy; the transport mechanism is environment-specific.
 - **Hazard analysis:** Operator UCAs (unsafe control actions) from the STPA integration section feed into whatever hazard register your environment maintains. The STPA UCA template is self-contained.

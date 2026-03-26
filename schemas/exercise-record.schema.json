@@ -2,13 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "exercise-record.schema.json",
   "type": "object",
+  "allOf": [{ "$ref": "common.schema.json" }],
   "properties": {
-    "id": { "type": "string", "pattern": "^EXR-\\d{3}$" },
+    "id": { "type": "string", "pattern": "^EXR-\\d{3,}$" },
     "object_type": { "const": "exercise_record" },
     "exercise_type": { "type": "string", "enum": ["duress-drill", "social-engineering-red-team", "oadc-threshold-validation", "epistemic-check-drill", "decision-tree-walkthrough", "team-state-sync", "safe-state-test"] },
     "date": { "type": "string", "format": "date" },
     "acceptance_criteria_met": { "type": "boolean" },
     "facilitator": { "type": "string" }
   },
-  "required": ["id", "object_type", "exercise_type", "date", "acceptance_criteria_met", "facilitator"]
+  "required": ["id", "object_type", "exercise_type", "date", "acceptance_criteria_met", "facilitator"],
+  "unevaluatedProperties": false
 }

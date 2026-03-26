@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "duress-event.schema.json",
   "type": "object",
+  "allOf": [{ "$ref": "common.schema.json" }],
   "properties": {
-    "id": { "type": "string", "pattern": "^DUR-\\d{3}$" },
+    "id": { "type": "string", "pattern": "^DUR-\\d{3,}$" },
     "object_type": { "const": "duress_event" },
     "timestamp": { "type": "string", "format": "date-time" },
     "environment": { "type": "string" },
@@ -13,7 +14,8 @@
     "detected_by": { "type": "string" },
     "authority_containment_applied": { "type": "boolean" },
     "resolved": { "type": "boolean" },
-    "review_ref": { "type": "string", "pattern": "^REV-\\d{3}$" }
+    "review_ref": { "type": "string", "pattern": "^REV-\\d{3,}$" }
   },
-  "required": ["id", "object_type", "timestamp", "environment", "event_class", "signal_type", "operator_id", "detected_by"]
+  "required": ["id", "object_type", "timestamp", "environment", "event_class", "signal_type", "operator_id", "detected_by"],
+  "unevaluatedProperties": false
 }

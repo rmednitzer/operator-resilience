@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "h-state-event.schema.json",
   "type": "object",
+  "allOf": [{ "$ref": "common.schema.json" }],
   "properties": {
-    "id": { "type": "string", "pattern": "^HSE-\\d{3}$" },
+    "id": { "type": "string", "pattern": "^HSE-\\d{3,}$" },
     "object_type": { "const": "h_state_event" },
     "operator_id": { "type": "string" },
     "timestamp": { "type": "string", "format": "date-time" },
@@ -13,5 +14,6 @@
     "assessor": { "type": "string" },
     "assessment_method": { "type": "string", "enum": ["self-report", "peer-observation", "automated", "supervisor-assessment"] }
   },
-  "required": ["id", "object_type", "operator_id", "timestamp", "to_state", "trigger", "assessment_method"]
+  "required": ["id", "object_type", "operator_id", "timestamp", "to_state", "trigger", "assessment_method"],
+  "unevaluatedProperties": false
 }
