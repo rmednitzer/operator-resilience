@@ -37,6 +37,16 @@ artifacts:
     scope: operator-authority-degradation-contract
     status: draft
 
+  - path: docs/adversarial/threat-model.md
+    artifact_type: normative
+    scope: adversarial-threat-model-operator-targeting
+    status: draft
+
+  - path: docs/adversarial/comms-security.md
+    artifact_type: normative
+    scope: incident-communications-security-protocol
+    status: draft
+
   - path: docs/adversarial/duress-protocol-spec.md
     artifact_type: normative
     scope: duress-protocol-architecture-specification
