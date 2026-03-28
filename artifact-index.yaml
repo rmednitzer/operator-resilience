@@ -72,6 +72,31 @@ artifacts:
     scope: team-dynamics-collective-cognitive-governance
     status: draft
 
+  - path: docs/cross-cutting/post-event-review.md
+    artifact_type: normative
+    scope: post-event-review-process-learning-loop
+    status: draft
+
+  - path: docs/cross-cutting/return-to-duty.md
+    artifact_type: normative
+    scope: return-to-duty-protocol-readiness-checks
+    status: draft
+
+  - path: docs/integration/regulatory-cross-reference.md
+    artifact_type: normative
+    scope: regulatory-cross-reference-compliance-mapping
+    status: draft
+
+  - path: docs/integration/stpa-uca.md
+    artifact_type: normative
+    scope: stpa-uca-operator-as-controller-hazard-analysis
+    status: draft
+
+  - path: docs/integration/autonomous-system-bridge.md
+    artifact_type: normative
+    scope: autonomous-system-bridge-oadc-platform-authority-mapping
+    status: draft
+
   - path: schemas/common.schema.json
     artifact_type: normative
     scope: common-register-entry-schema
