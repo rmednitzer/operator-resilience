@@ -24,7 +24,7 @@ The core problem is the operator–authority–auditability triangle. High opera
 
 **System integration.** STPA (System-Theoretic Process Analysis) UCA (unsafe control action) template for operator-as-controller. Operator-absent safe state specifications per operating context. Autonomous-system bridge mapping OADC to authority hierarchies, H-state to system modes, and epistemic state to connectivity state.
 
-**Regulatory cross-reference.** Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Art. 21(2); CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230 Annex III; MIL-STD-882E; DoD Directive 3000.09. See `docs/integration/regulatory-cross-reference.md` for article-level traceability.
+**Regulatory cross-reference.** Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Arts. 21, 23; CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230; EU Working Time Directive 2003/88/EC; CRA 2024/2847; GDPR; Seveso III; MIL-STD-882E; DoD Directive 3000.09; NATO STANAG 4670, STANAG 7201, HFM-322; ISO 10075, ISO 11064; IEC 62443. See `docs/integration/regulatory-cross-reference.md` for article-level traceability.
 
 ## Canonical data model
 

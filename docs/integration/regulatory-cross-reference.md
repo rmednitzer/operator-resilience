@@ -83,7 +83,8 @@ Transposition deadline 2024-10-17. Applies to essential and important entities i
 
 | NIS2 provision | Repository control | Alignment |
 |---|---|---|
-| Art. 23(1): report without undue delay, no later than 24 hours after becoming aware | Policy stmt 9: mandatory post-event review within defined timelines | Direct — incident reporting triggers are OADC trigger events and post-event review |
+| Art. 23(4)(a): early warning within 24 hours of becoming aware of significant incident | Policy stmt 9: mandatory post-event review within defined timelines; OADC trigger events produce timestamped evidence | Direct — OADC trigger events and evidence logs provide the data needed for early-warning reports |
+| Art. 23(4)(b): incident notification without undue delay, within 72 hours | Post-event review; decision logs; H-state assessment records | Direct — evidence pipeline supports structured incident notification |
 
 **Recital 79:** Explicitly calls for "human resources security" and "appropriate access control policies" as part of cybersecurity risk management. The OADC is an operationalisation of access control that degrades with operator state — a refinement beyond static RBAC.
 
@@ -185,7 +186,7 @@ Standard for system safety in defence/military contexts.
 |---|---|---|
 | Task 204: Operating and support hazard analysis | STPA-informed hazard analysis for operator-as-controller | Direct |
 | Task 301: Safety verification (includes hazard tracking, risk acceptance records) | Exercise program; post-event review; evidence pipeline | Direct — control verification requires exercise and review |
-| **Task 401: Safety assessment** [**Correction:** Previously mislabelled as "accountability/logging"; correct designation is "Safety Verification"] | Mission safety case; hazard register; evidence pipeline | Direct — documents that safety controls are adequately implemented |
+| Task 401: Safety assessment [**Correction:** previously mislabelled in this repo as "accountability/logging"] | Mission safety case; hazard register; evidence pipeline | Direct — documents that safety controls are adequately implemented |
 | General requirement: Documentation and traceability | Decision logs; OADC trigger logs; H-state assessment records | Direct — operator-resilience controls produce traceable evidence |
 
 **Note:** Change 1 issued 27 September 2023. Verify current edition for specific requirements.
@@ -239,9 +240,9 @@ NATO STO HFM-322 workshop series and task group outputs (2025–2026).
 
 International standard for mental workload in work systems.
 
-| Part | Relevance |
-|------|-----------|
-| ISO 10075-1:2017 (General concepts and terms) | Defines mental workload, mental fatigue, mental strain — core to H-state assessment |
+| Part | Relevance | Alignment |
+|------|-----------|-----------|
+| ISO 10075-1:2017 (General concepts and terms) | Defines mental workload, mental fatigue, mental strain | Core to H-state assessment taxonomy |
 | ISO 10075-2:2024 (Design principles) | Design guidance to reduce mental overload; explicitly covers robotics and autonomous systems | Directly relevant to OADC design and H-state degradation triggers |
 | ISO 10075-3:2004 (Measurement and assessment) | Methods for assessing mental workload in operational tasks | Applicable to exercise program evaluation and H-state validation |
 
@@ -251,12 +252,12 @@ International standard for mental workload in work systems.
 
 International standard for control-centre design for safety-critical systems.
 
-| Part | Relevance |
-|------|-----------|
-| ISO 11064-1:2024 (Principles and design process) | Principles for human-centred control-centre design | Applicable to ground control station (GCS) design for autonomous platforms |
+| Part | Relevance | Alignment |
+|------|-----------|-----------|
+| ISO 11064-1:2024 (Principles and design process) | Principles for human-centred control-centre design | Applicable to GCS design for autonomous platforms |
 | ISO 11064-2:2024 (Environmental conditions) | Physical environment design (lighting, noise, climate) | Relevant to operator fatigue management |
 | ISO 11064-3:2024 (Display systems) | Information presentation and human-machine interfaces | Relevant to epistemic integrity and decision support |
-| ISO 11064-5:2024 (Workstation design) | Ergonomic design of control-station workplaces | Supportive to operator well-being during sustained operations |
+| ISO 11064-5:2024 (Workstation design) | Ergonomic design of control-station workplaces | Supportive for sustained operations |
 
 **Alignment:** The repo's operator-absent safe state and pre-incident readiness checklist assume GCS design aligned with ISO 11064.
 
@@ -267,7 +268,7 @@ International standard for operational-technology cybersecurity.
 | Requirement area | Repository control | Alignment |
 |---|---|---|
 | Zone-based architecture and defence-in-depth | OADC enforcement via technical controls (two-person auth gates, session timeout) | Supportive — OADC provides human-level access control that complements technical zones |
-| Security levels (SL) allocation | Exercise program validates that controls remain non-functional if untested | Supportive — operational validation required by IEC 62443 SL methodology |
+| Security levels (SL) allocation | Exercise program validates controls on defined cadences; untested controls assumed non-functional | Supportive — operational validation aligns with IEC 62443 SL methodology |
 | Incident response | Post-event review; duress protocols; H-state assessment | Supportive |
 
 **Note:** IEC 62443 is referenced in autonomous-platform-assurance for UGVs with industrial comms. The operator-resilience repo's human-side controls complement IEC 62443's technology-side controls.
@@ -287,7 +288,7 @@ International standard for operational-technology cybersecurity.
 
 | Regulation | Relevance | Action |
 |---|---|---|
-| **EU Product Liability Directive (Reg. 2024/2853)** | Disclosure-of-evidence and presumption-of-defectiveness provisions require robust field-evidence chains (relevant if operator decisions affect product liability exposure) | Conditional — programme legal team must assess if operator decisions trigger PLD Art. 7 defectiveness analysis |
+| **EU Product Liability Directive (Dir. 2024/2853)** | Disclosure-of-evidence and presumption-of-defectiveness provisions require robust field-evidence chains (relevant if operator decisions affect product liability exposure) | Conditional — programme legal team must assess if operator decisions trigger PLD Art. 7 defectiveness analysis |
 | **EASA Regulation 965/2012 (Part-ORO.FTL)** | Fatigue risk management for aircrew on commercial operations; prescribes daily rest, weekly rest, and duty-time limits stricter than EU Working Time Directive | Conditional — applies if autonomous platform operates under EASA certification with human crew |
 | **ISO 27001/27002** | Information security management systems; baseline for security-control frameworks | Recommended — OADC enforces access control degradation, complementary to ISO 27001 ISMS |
 | **ISO 9241-210:2019** | Human-centred design for interactive systems | Recommended for HAT interface design validation |

@@ -51,8 +51,10 @@ Indicative mapping — applicability depends on sector, entity classification, a
 | Human resources security, access control policies | NIS2 Art. 21(2)(i) | OADC system enforcement §44–49 |
 | Resilience measures: employee security management, personnel in critical functions | CER Art. 13(1)(e) | Roles §30–36; OADC §§1–3 |
 | Background checks for personnel exercising critical functions | CER Art. 14 | Conditional — see cross-ref |
-| Accountability and logging | MIL-STD-882E Task 401 | Policy stmt 3, 8 |
-| Meaningful human control | DoD Directive 3000.09 | OADC §§1–4 |
+| Safety verification and documentation traceability | MIL-STD-882E | Policy stmt 3, 8 |
+| Appropriate levels of human judgment over use of force | DoD Directive 3000.09 | OADC §§1–4 |
+| Operator duty limits, daily and weekly rest | EU Working Time Directive (Dir. 2003/88/EC) | OADC §§1–2; circadian §10 |
+| Mental workload and fatigue management | ISO 10075 series | H-state table; OADC duty limits |
 
 ## Review log
 
