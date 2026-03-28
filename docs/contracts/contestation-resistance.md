@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Scope:** Mechanisms that make the Operator Authority Degradation Contract resistant to challenge by operators or adversaries. Covers contestation vectors, resistance patterns, meta-contract governance, and verification integrity requirements.
 **Status:** DRAFT
-**Referenced by:** `policies/POL-OR-01-operator-governance.md` stmt 2; `docs/adversarial/threat-model.md`
+**Referenced by:** README.md; `docs/cross-cutting/team-dynamics.md` §4.2
 
 ---
 
