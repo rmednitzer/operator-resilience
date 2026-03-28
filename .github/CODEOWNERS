@@ -1,0 +1,23 @@
+# CODEOWNERS — operator-resilience
+# See https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything
+*                                       @rmednitzer
+
+# Safety-critical: OADC definitions, duress protocols, safe-state specs
+data/registers/oadc-*                   @rmednitzer
+docs/adversarial/                       @rmednitzer
+docs/cross-cutting/safe-state*          @rmednitzer
+
+# Policies — require owner review
+policies/                               @rmednitzer
+
+# Schemas — structural changes require owner review
+schemas/                                @rmednitzer
+
+# Canonical registers
+data/registers/                         @rmednitzer
+
+# Templates and checklists
+templates/                              @rmednitzer
+checklists/                             @rmednitzer

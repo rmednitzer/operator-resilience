@@ -1,0 +1,32 @@
+---
+name: Documentation Improvement
+description: Suggest an improvement to documentation, templates, or checklists.
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What documentation needs to be improved, added, or corrected?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: How should the documentation be changed?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Area
+      options:
+        - Docs (epistemics, contracts, resilience, adversarial, etc.)
+        - Templates
+        - Checklists
+        - README / CONTRIBUTING
+        - Schemas (documentation aspects)
+        - Other
+    validations:
+      required: true

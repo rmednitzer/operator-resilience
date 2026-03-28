@@ -1,0 +1,43 @@
+---
+name: Governance Change Request
+description: Propose a change to policies, OADC definitions, registers, or safety-critical artifacts.
+labels: ["governance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Governance changes follow the review process defined in [CONTRIBUTING.md](../../CONTRIBUTING.md).
+        Safety-critical changes require two-person review and impact analysis.
+  - type: dropdown
+    id: classification
+    attributes:
+      label: Change Classification
+      options:
+        - Safety-critical (OADC, duress, safe-state, H-state thresholds)
+        - Contract (policies, operating contracts)
+        - Operational (registers, checklists, templates)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Proposed Change
+      description: What do you want to change and why?
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact Analysis
+      description: What does this change affect? Consider CACE — changing anything changes everything.
+      placeholder: |
+        - Affected artifacts:
+        - Downstream effects:
+        - Risk considerations:
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting Evidence
+      description: Link to incident reports, exercises, or reviews that motivate this change.
