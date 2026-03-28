@@ -37,6 +37,16 @@ artifacts:
     scope: operator-authority-degradation-contract
     status: draft
 
+  - path: docs/exercise/exercise-program.md
+    artifact_type: normative
+    scope: exercise-program-types-cadences-acceptance-criteria
+    status: draft
+
+  - path: docs/cross-cutting/safe-state.md
+    artifact_type: normative
+    scope: operator-absent-safe-state-specification-framework
+    status: draft
+
   - path: schemas/common.schema.json
     artifact_type: normative
     scope: common-register-entry-schema
