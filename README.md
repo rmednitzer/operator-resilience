@@ -10,21 +10,21 @@ The core problem is the operator–authority–auditability triangle. High opera
 
 ## What is in the repository
 
-**Operator epistemics.** Belief provenance model mapping to Endsley's three-level situational awareness framework. Operator information intake as a trust boundary with source authentication, freshness, cross-validation, authority, and consistency checks. Epistemic degradation markers including out-of-the-loop (OOTL) degradation. Pre-decision epistemic check with assumptions, constraints, unknowns, and confidence gating.
+**Operator epistemics** — [`docs/epistemics/belief-provenance.md`](docs/epistemics/belief-provenance.md). Belief provenance model mapping to Endsley's three-level situational awareness framework. Operator information intake as a trust boundary with source authentication, freshness, cross-validation, authority, and consistency checks. Evidence tagging (`[F]`/`[I]`/`[S]`) with confidence levels `{50, 70, 80, 90}` and confidence gating. Epistemic degradation markers including out-of-the-loop (OOTL) degradation. Pre-decision epistemic check format.
 
-**Operating contracts.** Operator Authority Degradation Contract (OADC) — a formal table defining how operator authority narrows as conditions degrade, covering duty duration, incident duration, single-source claims, time pressure, unverified authority, self-reported degradation, epistemic markers, contested environments, passive monitoring (OOTL), circadian effects, and organizational stress. Contract contestation resistance patterns. Meta-contract governance. Verification integrity requirements.
+**Operating contracts** — [`docs/contracts/oadc.md`](docs/contracts/oadc.md) · [`docs/contracts/contestation-resistance.md`](docs/contracts/contestation-resistance.md). Operator Authority Degradation Contract (OADC) — a formal table defining how operator authority narrows as conditions degrade, covering duty duration, incident duration, single-source claims, time pressure, unverified authority, self-reported degradation, epistemic markers, contested environments, passive monitoring (OOTL), circadian effects, and organizational stress. Contract contestation resistance patterns. Meta-contract governance. Verification integrity requirements.
 
-**Cognitive resilience.** Human mode-state table (H-0 to H-4) analogous to system degraded-mode hierarchies. Proactive and reactive degradation detection. Stress-adapted decision aids with pre-committed decision trees. Mandatory handoff protocol. CACE (Changing Anything Changes Everything) for operator state changes.
+**Cognitive resilience** — [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md) · [`docs/cross-cutting/safe-state.md`](docs/cross-cutting/safe-state.md). Human mode-state table (H-0 to H-4) with full taxonomy: observable indicators, decision authority limits, support requirements, and recovery criteria per state. Assessment methods, proactive and reactive degradation detection, mandatory handoff protocol, CACE (Changing Anything Changes Everything) for operator state changes, team mode-state. Operator-absent safe state specification framework.
 
-**Adversarial operator targeting.** Threat model covering social engineering, duress, information manipulation, fatigue exploitation, and relationship exploitation. Insider threat controls at the operating-contract layer. Duress protocols with covert signaling, authority containment, and recovery. Incident communications security with closed-loop (readback/hearback) protocol. Information integrity verification.
+**Adversarial operator targeting** — [`docs/adversarial/threat-model.md`](docs/adversarial/threat-model.md) · [`docs/adversarial/duress-protocol-spec.md`](docs/adversarial/duress-protocol-spec.md) · [`docs/adversarial/comms-security.md`](docs/adversarial/comms-security.md). Threat model covering social engineering, duress, information manipulation, fatigue exploitation, relationship exploitation, and insider threat — with attack chain analysis and OADC control mappings. Duress protocol specification: signal architecture (verbal/digital/physical), authority containment, evidence integrity, recovery. Incident communications security: closed-loop (readback/hearback) protocol, channel authentication, compromised-channel handling.
 
-**Team dynamics.** Collective cognitive failure modes: groupthink, information asymmetry, authority diffusion. Challenge-and-response protocol adapted from aviation CRM (Crew Resource Management). Team mode-state. Cross-organizational shared operating contracts.
+**Team dynamics** — [`docs/cross-cutting/team-dynamics.md`](docs/cross-cutting/team-dynamics.md). Collective cognitive failure modes: groupthink, information asymmetry, authority diffusion, shared OOTL, authority gradient suppression, collective epistemic overconfidence. Mandatory challenge-and-response protocol adapted from aviation CRM. Team mode-state derivation. Cross-organizational shared operating contracts.
 
-**Exercise and validation.** Seven exercise types with cadences, acceptance criteria, and evidence capture. Post-event review and learning loop with defined triggers and review timelines. Return-to-duty protocol with structured readiness checks.
+**Exercise and validation** — [`docs/exercise/exercise-program.md`](docs/exercise/exercise-program.md) · [`docs/cross-cutting/post-event-review.md`](docs/cross-cutting/post-event-review.md) · [`docs/cross-cutting/return-to-duty.md`](docs/cross-cutting/return-to-duty.md). Seven exercise types (ET-1–ET-7) with cadences, acceptance criteria, evidence capture, and failure responses. Post-event review: trigger deadlines, review objectives, independence requirements, corrective action tracking, pattern escalation, learning loop closure. Return-to-duty protocol: H-state-differentiated recovery requirements, structured readiness check, H-state upgrade declaration.
 
-**System integration.** STPA (System-Theoretic Process Analysis) UCA (unsafe control action) template for operator-as-controller. Operator-absent safe state specifications per operating context. Autonomous-system bridge mapping OADC to authority hierarchies, H-state to system modes, and epistemic state to connectivity state.
+**System integration** — [`docs/integration/stpa-uca.md`](docs/integration/stpa-uca.md) · [`docs/integration/autonomous-system-bridge.md`](docs/integration/autonomous-system-bridge.md). STPA UCA template for operator-as-controller: four UCA types with worked examples (IT/SRE, OT/ICS, GCS) and UCA–OADC linkage. Autonomous-system bridge: OADC state → authority permission set, H-state → system operating mode, epistemic state → connectivity state.
 
-**Regulatory cross-reference.** Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Arts. 21, 23; CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230; EU Working Time Directive 2003/88/EC; CRA 2024/2847; GDPR; Seveso III; MIL-STD-882E; DoD Directive 3000.09; NATO STANAG 4670, STANAG 7201, HFM-322; ISO 10075, ISO 11064; IEC 62443. See `docs/integration/regulatory-cross-reference.md` for article-level traceability.
+**Regulatory cross-reference** — [`docs/integration/regulatory-cross-reference.md`](docs/integration/regulatory-cross-reference.md). Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Arts. 21, 23; CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230; EU Working Time Directive 2003/88/EC; CRA 2024/2847 (with applicability decision tree); GDPR Arts. 6, 9, 32, 35 (with DPIA blocking requirement); Seveso III; MIL-STD-882E; DoD Directive 3000.09; NATO STANAG 4670, STANAG 7201, HFM-322; ISO 10075, ISO 11064; IEC 62443.
 
 ## Canonical data model
 
@@ -65,13 +65,16 @@ This repository integrates with adjacent governance layers through defined inter
 
 ## Getting started
 
-1. Read `docs/epistemics/belief-provenance.md` — understand the epistemic model
-2. Read `docs/contracts/oadc.md` — understand how operator authority degrades
-3. Adapt `policies/POL-OR-01-operator-governance.md` to your organization
-4. Populate `data/registers/oadc-register.yaml` with environment-specific OADC instances
-5. Build templates: decision log, duress protocol, exercise program
-6. Run `make validate` before review or merge
-7. Execute initial exercises per `docs/exercise/exercise-program.md`
+1. Read [`docs/epistemics/belief-provenance.md`](docs/epistemics/belief-provenance.md) — understand the epistemic model and `[F]/[I]/[S]` tagging
+2. Read [`docs/contracts/oadc.md`](docs/contracts/oadc.md) — understand how operator authority degrades
+3. Read [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md) — understand the H-0–H-4 human mode-state hierarchy
+4. Adapt [`policies/POL-OR-01-operator-governance.md`](policies/POL-OR-01-operator-governance.md) to your organization
+5. Complete a DPIA before operational use in EU contexts — see [`docs/integration/regulatory-cross-reference.md`](docs/integration/regulatory-cross-reference.md) §9.5
+6. Populate `data/registers/oadc-register.yaml` with environment-specific OADC instances using the template at `templates/oadc/TEMPLATE-oadc-instance.md`
+7. Define per-environment safe states per [`docs/cross-cutting/safe-state.md`](docs/cross-cutting/safe-state.md)
+8. Establish duress protocols per [`docs/adversarial/duress-protocol-spec.md`](docs/adversarial/duress-protocol-spec.md) for applicable environments
+9. Run `make validate` before review or merge
+10. Execute initial exercises per [`docs/exercise/exercise-program.md`](docs/exercise/exercise-program.md) — start with ET-3 (OADC validation) and ET-7 (safe-state test)
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the review process, commit conventions, and branch model.
 

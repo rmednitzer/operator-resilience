@@ -22,9 +22,79 @@ artifacts:
     scope: operator-governance-policy
     status: draft
 
+  - path: docs/epistemics/belief-provenance.md
+    artifact_type: normative
+    scope: epistemic-model-belief-provenance
+    status: draft
+
+  - path: docs/resilience/h-state-table.md
+    artifact_type: normative
+    scope: h-state-hierarchy-taxonomy
+    status: draft
+
   - path: docs/contracts/oadc.md
     artifact_type: normative
     scope: operator-authority-degradation-contract
+    status: draft
+
+  - path: docs/contracts/contestation-resistance.md
+    artifact_type: normative
+    scope: oadc-contestation-resistance-meta-contract-verification
+    status: draft
+
+  - path: docs/adversarial/threat-model.md
+    artifact_type: normative
+    scope: adversarial-threat-model-operator-targeting
+    status: draft
+
+  - path: docs/adversarial/comms-security.md
+    artifact_type: normative
+    scope: incident-communications-security-protocol
+    status: draft
+
+  - path: docs/adversarial/duress-protocol-spec.md
+    artifact_type: normative
+    scope: duress-protocol-architecture-specification
+    status: draft
+
+  - path: docs/exercise/exercise-program.md
+    artifact_type: normative
+    scope: exercise-program-types-cadences-acceptance-criteria
+    status: draft
+
+  - path: docs/cross-cutting/safe-state.md
+    artifact_type: normative
+    scope: operator-absent-safe-state-specification-framework
+    status: draft
+
+  - path: docs/cross-cutting/team-dynamics.md
+    artifact_type: normative
+    scope: team-dynamics-collective-cognitive-governance
+    status: draft
+
+  - path: docs/cross-cutting/post-event-review.md
+    artifact_type: normative
+    scope: post-event-review-process-learning-loop
+    status: draft
+
+  - path: docs/cross-cutting/return-to-duty.md
+    artifact_type: normative
+    scope: return-to-duty-protocol-readiness-checks
+    status: draft
+
+  - path: docs/integration/regulatory-cross-reference.md
+    artifact_type: normative
+    scope: regulatory-cross-reference-compliance-mapping
+    status: draft
+
+  - path: docs/integration/stpa-uca.md
+    artifact_type: normative
+    scope: stpa-uca-operator-as-controller-hazard-analysis
+    status: draft
+
+  - path: docs/integration/autonomous-system-bridge.md
+    artifact_type: normative
+    scope: autonomous-system-bridge-oadc-platform-authority-mapping
     status: draft
 
   - path: schemas/common.schema.json
