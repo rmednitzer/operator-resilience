@@ -55,7 +55,7 @@ The following conditions shall trigger transition to safe state. Triggers are no
 
 Each operating environment must have a safe-state specification defined before operational use. The specification follows the framework below. It is environment-specific: there is no universal safe state. Generic defaults are unsafe defaults.
 
-The specification template is located at `templates/` (see §4.7 for authoring guidance). The safe-state specification for each environment is referenced in its OADC instance (`data/registers/oadc-register.yaml`).
+The safe-state specification for each environment is authored using the framework in §4 below and referenced in its OADC instance (`data/registers/oadc-register.yaml`).
 
 ### 4.1 Actions the system takes (active safe-state behaviors)
 
