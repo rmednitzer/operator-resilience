@@ -1,4 +1,4 @@
-# operator-resilience
+# Operator Resilience
 
 Governance-as-code for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions.
 
