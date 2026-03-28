@@ -24,7 +24,7 @@ The core problem is the operator–authority–auditability triangle. High opera
 
 **System integration.** STPA (System-Theoretic Process Analysis) UCA (unsafe control action) template for operator-as-controller. Operator-absent safe state specifications per operating context. Autonomous-system bridge mapping OADC to authority hierarchies, H-state to system modes, and epistemic state to connectivity state.
 
-**Regulatory cross-reference.** Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Art. 21(2); CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230 Annex III; MIL-STD-882E; DoD Directive 3000.09. See `docs/integration/regulatory-cross-reference.md` for article-level traceability.
+**Regulatory cross-reference.** Indicative mapping to EU AI Act Arts. 9, 14, 26; NIS2 Arts. 21, 23; CER Arts. 13–14; DORA Art. 11; Machinery Reg. 2023/1230; EU Working Time Directive 2003/88/EC; CRA 2024/2847; GDPR; Seveso III; MIL-STD-882E; DoD Directive 3000.09; NATO STANAG 4670, STANAG 7201, HFM-322; ISO 10075, ISO 11064; IEC 62443. See `docs/integration/regulatory-cross-reference.md` for article-level traceability.
 
 ## Canonical data model
 
@@ -48,13 +48,11 @@ Current canonical registers:
 7. **Exercise or it does not exist.**
 8. **The schema is authoritative.** Human-readable tables are rendered outputs, not the primary data plane.
 
-## Companion repositories
+## Companion repository
 
-This repository is standalone and environment-agnostic but complements the following governance repos by the same owner:
+This repository is standalone and environment-agnostic but complements the following governance repo by the same owner:
 
 - [`autonomous-platform-assurance`](https://github.com/rmednitzer/autonomous-platform-assurance): platform authority hierarchy (AL-0 to AL-8), CDIL operation, hostile-environment security, disconnected key management, and mission safety. The OADC governs the operator side of the authority boundary; AL governs the platform side.
-- [`platform-assurance`](https://github.com/rmednitzer/platform-assurance): ground-side IT, evidence pipeline, IAM, observability, NIS2 and organisational controls.
-- [`cps-assurance`](https://github.com/rmednitzer/cps-assurance): functional safety lifecycle, OT and ICS security, product conformity, and EU product regulation overlays.
 
 ## Integration interfaces
 

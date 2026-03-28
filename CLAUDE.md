@@ -7,7 +7,7 @@ This repository contains governance artifacts for operator authority, cognition,
 **Owner:** Roman Mednitzer
 **License:** MIT
 **Operational context:** IT/SRE, OT/ICS, autonomous platforms, military/first-responder operations — standalone, environment-agnostic
-**Companion repos:** [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance), [platform-assurance](https://github.com/rmednitzer/platform-assurance), [cps-assurance](https://github.com/rmednitzer/cps-assurance)
+**Companion repo:** [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance)
 
 ## Repository structure
 
