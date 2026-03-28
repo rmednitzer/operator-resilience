@@ -37,6 +37,11 @@ artifacts:
     scope: operator-authority-degradation-contract
     status: draft
 
+  - path: docs/adversarial/duress-protocol-spec.md
+    artifact_type: normative
+    scope: duress-protocol-architecture-specification
+    status: draft
+
   - path: docs/exercise/exercise-program.md
     artifact_type: normative
     scope: exercise-program-types-cadences-acceptance-criteria

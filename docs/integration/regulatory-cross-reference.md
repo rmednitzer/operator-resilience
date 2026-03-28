@@ -153,6 +153,46 @@ Cyber Resilience Act. Entry into force: December 2024. Main application date: 20
 
 **Gap:** CRA applicability is programme-specific and must be evaluated by the deploying organisation's product compliance lead before EU market placement.
 
+### CRA applicability decision tree
+
+Use the following decision path to determine whether CRA applies to a product or system before EU market placement:
+
+1. **Is the product or system placed on the EU market?**
+   - No → CRA does not apply. Stop.
+   - Yes → Continue to step 2.
+
+2. **Does it contain digital elements** (software, hardware with data-processing capability, network connectivity)?
+   - No → CRA does not apply. Stop.
+   - Yes → Continue to step 3.
+
+3. **Is it excluded by a sectoral carve-out** under CRA Art. 2(2)?
+   - Medical devices (MDR, Reg. 2017/745) → excluded if fully covered by MDR conformity assessment.
+   - In vitro diagnostics (IVDR, Reg. 2017/746) → excluded if fully covered by IVDR.
+   - Civil aviation products (EASA, Reg. 2018/1139) → excluded where EASA type-certification covers the digital elements.
+   - Automotive (General Safety Reg. 2019/2144 / UNECE R155/R156) → excluded for covered vehicle software update systems.
+   - Marine equipment (Marine Equipment Directive 2014/90/EU) → excluded for covered marine equipment.
+   - If excluded → CRA does not apply. Document the exclusion basis. Stop.
+   - If not excluded → Continue to step 4.
+
+4. **Military and national security exclusion:** CRA Art. 2(2)(a) excludes products "exclusively developed or modified for national security or military purposes."
+   - If exclusively developed or modified for national security or military purposes → CRA does not apply. Document the exclusion basis and verify scope with legal counsel.
+   - Mixed-use or dual-use products: exclusion may not apply to civilian configurations. Legal assessment required.
+   - If not excluded → Continue to step 5.
+
+5. **Determine CRA component classification:**
+   - **Default (most products):** conformity by self-assessment (internal control).
+   - **Important — Class I** (Annex III, Part I: identity management software, browsers, password managers, SIEM, network monitoring, firewalls, microcontrollers, etc.): conformity by third-party audit or harmonised standards.
+   - **Important — Class II** (Annex III, Part II: OS, hypervisors, industrial automation, safety-related systems, smart-meter gateways, etc.): conformity by notified body.
+   - **Critical** (Annex IV): hardware devices with security boxes and smartcard readers; subject to European cybersecurity certification scheme.
+   - Classification affects the conformity assessment route and documentation requirements.
+
+6. **Key CRA application dates:**
+   - Art. 14 vulnerability reporting obligations: **2026-09-11**
+   - CAB (Conformity Assessment Body) provisions: **2026-06-11**
+   - Full application (all obligations): **2027-12-11**
+
+> **Action:** The deploying organisation's product compliance lead must complete this assessment and document the outcome before EU market placement. The result determines the conformity assessment route and timeline obligations.
+
 ## 9 — GDPR (Regulation 2016/679)
 
 Applies to all organisations processing personal data of EU residents.
@@ -163,8 +203,59 @@ Applies to all organisations processing personal data of EU residents.
 | Art. 6: lawful basis for processing | Policy stmt 3: epistemic checks require logging assumptions and confidence; lawful basis must be established per GDPR Art. 6 | Direct — operator authority and H-state data processing require legal basis (likely Art. 6(1)(f) legitimate interest or Art. 6(1)(c) legal obligation, depending on sector) |
 | Art. 9: special categories of personal data | H-state assessments (fatigue, cognitive state) are health-adjacent data | Conditional — H-state data may qualify as health data under Art. 4(15); if so, Art. 9(2) exemption required (e.g. Art. 9(2)(b) employment obligations or Art. 9(2)(g) substantial public interest) |
 | Art. 32: security of processing | OADC enforcement and evidence integrity controls | Supportive — technical and organisational measures for confidentiality, integrity, availability |
+| Art. 35: Data Protection Impact Assessment (DPIA) | H-state assessments, operator decision logs, and duress event records trigger DPIA requirements | **BLOCKING** — DPIA must be completed before operational deployment in EU contexts; see §9.5 |
 
-**Gap:** Formal DPIA (Data Protection Impact Assessment) required for operator decision logs and H-state registers before operational deployment. Not addressed in this repository.
+> **Blocking requirement:** A formal DPIA under GDPR Art. 35 is required before operational deployment in any EU context. H-state assessment data and operator decision logs have been identified as triggering Art. 35 requirements. See §9.5 for detailed DPIA analysis.
+
+### 9.5 — GDPR Art. 35: Data Protection Impact Assessment (DPIA)
+
+#### When a DPIA is required
+
+A DPIA is mandatory under Art. 35(1) where processing is "likely to result in a high risk to the rights and freedoms of natural persons," taking into account the nature, scope, context, and purposes. Three specific triggers under Art. 35(3) are relevant to this repository:
+
+| GDPR trigger | Relevance to this repository |
+|---|---|
+| Art. 35(3)(a): systematic and extensive evaluation of personal aspects of natural persons based on automated processing, including profiling, on which decisions are taken that produce significant effects | H-state assessment is a systematic evaluation of operator cognitive capacity; where automated indicators contribute to H-state classification, this trigger applies |
+| Art. 35(3)(b): large-scale processing of special categories of data referred to in Art. 9(1) | H-state assessments may qualify as health data under Art. 4(15) + Art. 9(1); operator decision logs combined with H-state records create a profile that may qualify as health-adjacent special-category data |
+| Art. 35(1): new technologies and large-scale systematic monitoring | Continuous operator state monitoring is a new-technology application; systematic monitoring of operator behavior and cognitive state triggers Art. 35(1) even where Art. 35(3) does not apply directly |
+
+#### Why this repository triggers DPIA requirements
+
+Three processing activities in this repository are identified as DPIA triggers [I,75]:
+
+1. **H-state assessments** — systematic evaluation of operator cognitive capacity constitutes evaluation of personal aspects of a natural person. H-state data is health-adjacent and may qualify as health data under Art. 4(15), particularly where fatigue, stress, or cognitive impairment indicators are recorded.
+2. **Operator decision logs** — decision logs contain operator identifiers linked to decision rationale, confidence assessments, and epistemic state. These are identifiable personal data; re-identification of pseudonymised logs is reasonably possible in small operator populations.
+3. **Duress event records** — duress records link operator identity to coercion events, H-state at time of event, and behavioral evidence logs. These records are sensitive personal data in any classification.
+
+#### What the DPIA must cover
+
+A compliant DPIA under Art. 35(7) must include at minimum:
+
+| DPIA element | Scope for this repository |
+|---|---|
+| Systematic description of processing operations and purposes | Document all data flows: H-state assessment inputs and outputs; decision log creation, storage, and access; duress event record chain |
+| Assessment of necessity and proportionality | Demonstrate that each data element collected is necessary for the safety and governance purposes; no excessive collection |
+| Assessment of risks to rights and freedoms | Identify risks: re-identification; unauthorized access to sensitive H-state or duress records; discrimination based on H-state history; chilling effect on self-reporting |
+| Measures envisaged to address risks | Technical controls (access restriction, encryption, audit logs); organizational controls (OADC, return-to-duty protocol, retention limits); legal basis confirmation |
+
+#### Lawful basis options
+
+| Processing category | Recommended basis | Notes |
+|---|---|---|
+| Operational decision logs (non-health) | Art. 6(1)(f) legitimate interest — security and safety of systems and personnel | Requires legitimate interest assessment (LIA); balancing test must demonstrate operator interests not overridden |
+| Duty-duration and on-call scheduling records | Art. 6(1)(c) legal obligation — EU Working Time Directive compliance | Direct legal obligation where WTD applies |
+| H-state assessments (health-adjacent) | Art. 9(2)(b) — employment law or collective agreement imposing obligations of occupational health and safety | Requires applicable employment law or agreement to expressly permit this processing |
+| H-state assessments (public-interest contexts) | Art. 9(2)(g) — substantial public interest, proportionate, with appropriate safeguards | Applicable in defence, critical infrastructure, or emergency-services contexts; requires Member State law basis |
+| Duress event records | Art. 6(1)(f) legitimate interest (security) + Art. 9(2)(b) or Art. 9(2)(g) for health-adjacent elements | Dual basis required where duress records include health-adjacent H-state data |
+
+#### DPO involvement and supervisory authority consultation
+
+- **DPO involvement (Art. 35(2)):** Where a Data Protection Officer is designated, they must be consulted before the DPIA is finalised. DPO advice must be documented.
+- **Prior consultation (Art. 36):** If the DPIA identifies high residual risks that cannot be mitigated to acceptable levels, the supervisory authority (national data protection authority) must be consulted before processing commences. The supervisory authority has up to 8 weeks to provide written advice (extendable by 6 weeks in complex cases). Processing must not commence while consultation is pending.
+
+#### Blocking pre-deployment requirement
+
+> **THIS IS A BLOCKING REQUIREMENT.** A DPIA must be completed — and where required, supervisory authority consultation completed — **before operational deployment in any EU context.** Deployment in the absence of a completed DPIA constitutes a violation of GDPR Art. 35. This applies regardless of the size of the deploying organisation or the scale of processing.
 
 ## 10 — Seveso III (Directive 2012/18/EU)
 
@@ -315,3 +406,5 @@ This cross-reference was produced by:
 - IEC 62443: confirmed as OT cybersecurity baseline [F,85]
 
 **Cross-reference date:** 2026-03-28. All regulations current as of this date.
+
+**DPIA blocking requirement:** H-state assessment data and operator decision logs have been identified as triggering DPIA requirements under GDPR Art. 35 (see §9.5). This is a blocking pre-deployment requirement for all EU-context deployments. A DPIA must be completed, and where required supervisory authority consultation completed, before operational deployment commences.
