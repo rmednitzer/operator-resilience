@@ -22,6 +22,16 @@ artifacts:
     scope: operator-governance-policy
     status: draft
 
+  - path: docs/epistemics/belief-provenance.md
+    artifact_type: normative
+    scope: epistemic-model-belief-provenance
+    status: draft
+
+  - path: docs/resilience/h-state-table.md
+    artifact_type: normative
+    scope: h-state-hierarchy-taxonomy
+    status: draft
+
   - path: docs/contracts/oadc.md
     artifact_type: normative
     scope: operator-authority-degradation-contract
