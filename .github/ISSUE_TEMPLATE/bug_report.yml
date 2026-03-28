@@ -1,0 +1,49 @@
+---
+name: Bug Report
+description: Report a validation error, broken link, schema defect, or other issue.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting this issue. Please fill out the sections below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is the problem?
+      placeholder: Describe the issue clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce this?
+      placeholder: |
+        1. Run `make validate`
+        2. See error in output...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Area
+      options:
+        - Schemas
+        - Canonical registers (data/registers/)
+        - Generated views (registers/)
+        - Policies
+        - Templates / Checklists
+        - Validation scripts
+        - Documentation
+        - Other
+    validations:
+      required: true

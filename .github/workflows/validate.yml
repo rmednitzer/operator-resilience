@@ -1,0 +1,41 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Repository Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Generate register views
+        run: make render
+
+      - name: Check for uncommitted generated views
+        run: |
+          if ! git diff --quiet registers/; then
+            echo "::error::Generated register views are out of date. Run 'make render' and commit the results."
+            git diff registers/
+            exit 1
+          fi
+
+      - name: Validate repository
+        run: make validate
