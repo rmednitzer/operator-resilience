@@ -156,6 +156,8 @@ The following OADC elements are frozen once an incident is declared and cannot b
 - `T` — incident duration buddy-pair trigger
 - `consequence_threshold` — high-consequence action classification boundary
 - `min_review_threshold` — minimum time before time-pressure condition activates
+- `passive_monitoring_interval` — maximum minutes before OOTL state-check required
+- `circadian_window` — local time range for circadian adjustment
 - Buddy-pair trigger conditions
 - Pre-committed decision tree content
 
