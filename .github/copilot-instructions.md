@@ -45,7 +45,7 @@ operator-resilience/
 
 - **H-state (H-0 to H-4):** Human mode-state hierarchy defining operator cognitive capacity. H-0 = full capacity, H-4 = incapacitated. Each level has defined indicators, decision authority limits, and required support.
 - **OADC (Operator Authority Degradation Contract):** Formal table defining how operator authority narrows as conditions degrade. Parameters are set per operating environment in advance, not during incidents.
-- **Epistemic provenance:** Operator beliefs tagged by provenance: `[F]` verified fact, `[I]` inference, `[S]` assumption/heuristic. Confidence: {50, 70, 80, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
+- **Epistemic provenance:** Operator beliefs tagged by provenance: `[F]` verified fact, `[I]` inference, `[S]` assumption/heuristic. Confidence: {50, 65, 70, 75, 80, 85, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
 
 ## Content standards
 

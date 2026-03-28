@@ -36,13 +36,16 @@ Every belief used in a consequential decision shall be tagged with its provenanc
 
 ## 3 — Confidence levels
 
-Confidence is an operator-declared estimate of correctness probability, quantized to the set `{50, 70, 80, 90}`. Continuous confidence ratings are not used; quantization forces explicit calibration and resists false precision.
+Confidence is an operator-declared estimate of correctness probability, quantized to the set `{50, 65, 70, 75, 80, 85, 90}`. Continuous confidence ratings are not used; quantization forces explicit calibration and resists false precision.
 
 | Level | Operational meaning | Typical provenance mix |
 |-------|---------------------|------------------------|
 | `50` | Coin-flip — operator has a position but cannot justify it above chance. High probability of material error. | Predominantly `[S]`; no corroborating `[F]`. |
+| `65` | Tentative — some supporting evidence but significant gaps remain. Not sufficient for consequential action without further checks. | Mostly `[S]` and `[I]`; limited `[F]`. |
 | `70` | Working hypothesis — the position is defensible but has known gaps or single-source dependence. Proceed with caution and reversibility. | Mix of `[I]` and `[S]`; some `[F]` support. |
+| `75` | Moderate — defensible inference with partial corroboration. Suitable for cautious action; residual uncertainty acknowledged. | Mix of `[I]` and `[F]`; some `[S]` remain. |
 | `80` | Confident — multiple independent sources or a solid inference chain. Known unknowns are bounded. | Predominantly `[F]` and `[I]`; limited `[S]`. |
+| `85` | Strong — well-corroborated by independent sources. Remaining uncertainty is narrow and bounded. | Predominantly `[F]`; inference chain is short. |
 | `90` | High confidence — convergent `[F]` evidence from independent sources. Material surprise would require deliberate deception or sensor failure. | Almost entirely `[F]`; inference chain is short and well-validated. |
 
 Confidence above `90` is not a valid rating. If an operator believes certainty is absolute, that belief itself is a calibration failure.

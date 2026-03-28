@@ -15,7 +15,7 @@
 > | `[I,nn]` | Inference from available evidence; confidence nn% |
 > | `[S,nn]` | Assumption, heuristic, or unresolved uncertainty; confidence nn% |
 >
-> `nn` ∈ {50, 70, 80, 90}
+> `nn` ∈ {50, 65, 70, 75, 80, 85, 90}
 >
 > **If confidence < 70%:** document what checks would raise it to ≥ 70%; proceed only with safe, reversible partial actions until the threshold is met.
 

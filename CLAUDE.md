@@ -63,7 +63,7 @@ The central governance construct. A formal table defining how operator authority
 
 ### Epistemic provenance
 
-Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] assumption/heuristic. Confidence levels: {50, 70, 80, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
+Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] assumption/heuristic. Confidence levels: {50, 65, 70, 75, 80, 85, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
 
 ### Evidence tagging
 
@@ -71,7 +71,7 @@ Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] ass
 [F] = verified fact
 [I] = inference
 [S] = heuristic or unresolved assumption
-Confidence = {50, 70, 80, 90}
+Confidence = {50, 65, 70, 75, 80, 85, 90}
 ```
 
 ## Content standards
