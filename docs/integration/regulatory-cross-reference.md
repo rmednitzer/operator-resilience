@@ -159,9 +159,9 @@ Applies to all organisations processing personal data of EU residents.
 
 | Requirement area | Repository control | Alignment |
 |---|---|---|
-| Art. 4(1): definition of personal data | Decision logs may contain operator identifiers, H-state assessments may contain health-adjacent data | Conditional — depends on whether decision logs are linked to identifiable persons |
-| Art. 6: lawful basis for processing | Policy stmt 3: epistemic checks require logging assumptions and confidence; lawful basis must be established per GDPR Art. 6 | Direct — operator authority and H-state data processing require legal basis |
-| Art. 9: special categories of personal data | H-state assessments (fatigue, mental state) are health-adjacent data; Art. 9 special protections apply | Direct — H-state data may qualify as health data under Art. 4(15) |
+| Art. 4(1): definition of personal data | Decision logs may contain operator identifiers; H-state assessments may contain health-adjacent data | Conditional — GDPR applies to identified and identifiable natural persons; even pseudonymised decision logs are personal data if re-identification is reasonably possible |
+| Art. 6: lawful basis for processing | Policy stmt 3: epistemic checks require logging assumptions and confidence; lawful basis must be established per GDPR Art. 6 | Direct — operator authority and H-state data processing require legal basis (likely Art. 6(1)(f) legitimate interest or Art. 6(1)(c) legal obligation, depending on sector) |
+| Art. 9: special categories of personal data | H-state assessments (fatigue, cognitive state) are health-adjacent data | Conditional — H-state data may qualify as health data under Art. 4(15); if so, Art. 9(2) exemption required (e.g. Art. 9(2)(b) employment obligations or Art. 9(2)(g) substantial public interest) |
 | Art. 32: security of processing | OADC enforcement and evidence integrity controls | Supportive — technical and organisational measures for confidentiality, integrity, availability |
 
 **Gap:** Formal DPIA (Data Protection Impact Assessment) required for operator decision logs and H-state registers before operational deployment. Not addressed in this repository.
@@ -288,7 +288,7 @@ International standard for operational-technology cybersecurity.
 
 | Regulation | Relevance | Action |
 |---|---|---|
-| **EU Product Liability Directive (Dir. 2024/2853)** | Disclosure-of-evidence and presumption-of-defectiveness provisions require robust field-evidence chains (relevant if operator decisions affect product liability exposure) | Conditional — programme legal team must assess if operator decisions trigger PLD Art. 7 defectiveness analysis |
+| **EU Product Liability Directive (Dir. 2024/2853)** | Disclosure-of-evidence and presumption-of-defectiveness provisions require robust field-evidence chains (relevant if operator decisions affect product liability exposure). Unlike Machinery Reg and AI Act, PLD has no explicit military/defence exclusion. | Conditional — programme legal team must assess if operator decisions trigger PLD Art. 7 defectiveness analysis; military products may still be in scope |
 | **EASA Regulation 965/2012 (Part-ORO.FTL)** | Fatigue risk management for aircrew on commercial operations; prescribes daily rest, weekly rest, and duty-time limits stricter than EU Working Time Directive | Conditional — applies if autonomous platform operates under EASA certification with human crew |
 | **ISO 27001/27002** | Information security management systems; baseline for security-control frameworks | Recommended — OADC enforces access control degradation, complementary to ISO 27001 ISMS |
 | **ISO 9241-210:2019** | Human-centred design for interactive systems | Recommended for HAT interface design validation |
