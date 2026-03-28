@@ -168,3 +168,86 @@ artifacts:
     artifact_type: normative
     scope: build-system
     status: active
+  - path: artifact-index.yaml
+    artifact_type: normative
+    scope: artifact-index
+    status: active
+
+  - path: .github/SECURITY.md
+    artifact_type: normative
+    scope: security-policy
+    status: active
+  - path: .github/copilot-instructions.md
+    artifact_type: normative
+    scope: ai-assistant-guide-copilot
+    status: active
+  - path: .github/pull_request_template.md
+    artifact_type: approved-pattern
+    scope: pull-request-template
+    status: active
+  - path: .github/dependabot.yml
+    artifact_type: normative
+    scope: dependency-management
+    status: active
+  - path: .github/workflows/validate.yml
+    artifact_type: normative
+    scope: ci-validation-workflow
+    status: active
+  - path: .github/ISSUE_TEMPLATE/bug_report.yml
+    artifact_type: approved-pattern
+    scope: bug-report-issue-template
+    status: active
+  - path: .github/ISSUE_TEMPLATE/config.yml
+    artifact_type: approved-pattern
+    scope: issue-template-config
+    status: active
+  - path: .github/ISSUE_TEMPLATE/documentation_improvement.yml
+    artifact_type: approved-pattern
+    scope: documentation-improvement-issue-template
+    status: active
+  - path: .github/ISSUE_TEMPLATE/governance_change.yml
+    artifact_type: approved-pattern
+    scope: governance-change-issue-template
+    status: active
+
+  - path: data/registers/oadc-register.yaml
+    artifact_type: canonical-data
+    scope: oadc-register-source
+    status: active
+  - path: data/registers/h-state-event-register.yaml
+    artifact_type: canonical-data
+    scope: h-state-event-register-source
+    status: active
+  - path: data/registers/duress-event-register.yaml
+    artifact_type: canonical-data
+    scope: duress-event-register-source
+    status: active
+  - path: data/registers/exercise-register.yaml
+    artifact_type: canonical-data
+    scope: exercise-register-source
+    status: active
+  - path: data/registers/review-register.yaml
+    artifact_type: canonical-data
+    scope: review-register-source
+    status: active
+
+  - path: registers/oadc-register.md
+    artifact_type: rendered-view
+    scope: oadc-register-markdown-view
+    status: active
+  - path: registers/h-state-event-register.md
+    artifact_type: rendered-view
+    scope: h-state-event-register-markdown-view
+    status: active
+  - path: registers/duress-event-register.md
+    artifact_type: rendered-view
+    scope: duress-event-register-markdown-view
+    status: active
+  - path: registers/exercise-register.md
+    artifact_type: rendered-view
+    scope: exercise-register-markdown-view
+    status: active
+  - path: registers/review-register.md
+    artifact_type: rendered-view
+    scope: review-register-markdown-view
+    status: active

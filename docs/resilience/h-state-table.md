@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Scope:** Formal definition of the H-state hierarchy (H-0 to H-4): taxonomy, observable indicators, decision authority limits, support requirements, assessment methods, detection heuristics, handoff triggers, and team mode-state.
 **Status:** DRAFT
-**Referenced by:** README.md; POL-OR-01 statements 4, 7; `docs/contracts/oadc.md` §2 (self-reported degradation, circadian, epistemic markers); `docs/epistemics/belief-provenance.md` §8, §10
+**Referenced by:** README.md; POL-OR-01 statement 7; `docs/contracts/oadc.md` §2 (self-reported degradation, circadian, epistemic markers); `docs/epistemics/belief-provenance.md` §8, §10
 
 ---
 

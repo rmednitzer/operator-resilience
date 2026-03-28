@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Status:** DRAFT
 **Scope:** Secure incident communication protocols for contested, degraded, or high-stress operating conditions. Covers closed-loop (readback/hearback) protocol, channel authentication, out-of-band verification, compromised communications handling, and evidence requirements.
-**Referenced by:** `docs/contracts/oadc.md`; `docs/epistemics/belief-provenance.md`; `docs/adversarial/threat-model.md`
+**Referenced by:** `docs/adversarial/threat-model.md`
 
 ---
 
@@ -15,7 +15,7 @@
 > | `[I,nn]` | Inference from available evidence; confidence nn% |
 > | `[S,nn]` | Assumption, heuristic, or unresolved uncertainty; confidence nn% |
 >
-> `nn` ∈ {50, 70, 80, 90}
+> `nn` ∈ {50, 65, 70, 75, 80, 85, 90}
 
 ---
 

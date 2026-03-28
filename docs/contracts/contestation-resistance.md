@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Scope:** Mechanisms that make the Operator Authority Degradation Contract resistant to challenge by operators or adversaries. Covers contestation vectors, resistance patterns, meta-contract governance, and verification integrity requirements.
 **Status:** DRAFT
-**Referenced by:** `docs/contracts/oadc.md`; `policies/POL-OR-01-operator-governance.md` stmt 2; `docs/adversarial/threat-model.md`
+**Referenced by:** README.md; `docs/cross-cutting/team-dynamics.md` §4.2
 
 ---
 
@@ -15,7 +15,7 @@
 > | `[I,nn]` | Inference from available evidence; confidence nn% |
 > | `[S,nn]` | Assumption, heuristic, or unresolved uncertainty; confidence nn% |
 >
-> `nn` ∈ {50, 70, 80, 90}
+> `nn` ∈ {50, 65, 70, 75, 80, 85, 90}
 >
 > **If confidence < 70%:** document what checks would raise it to ≥ 70%; proceed only with safe, reversible partial actions until the threshold is met.
 
@@ -156,6 +156,8 @@ The following OADC elements are frozen once an incident is declared and cannot b
 - `T` — incident duration buddy-pair trigger
 - `consequence_threshold` — high-consequence action classification boundary
 - `min_review_threshold` — minimum time before time-pressure condition activates
+- `passive_monitoring_interval` — maximum minutes before OOTL state-check required
+- `circadian_window` — local time range for circadian adjustment
 - Buddy-pair trigger conditions
 - Pre-committed decision tree content
 

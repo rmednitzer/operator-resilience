@@ -45,7 +45,7 @@ operator-resilience/
 
 - **H-state (H-0 to H-4):** Human mode-state hierarchy defining operator cognitive capacity. H-0 = full capacity, H-4 = incapacitated. Each level has defined indicators, decision authority limits, and required support.
 - **OADC (Operator Authority Degradation Contract):** Formal table defining how operator authority narrows as conditions degrade. Parameters are set per operating environment in advance, not during incidents.
-- **Epistemic provenance:** Operator beliefs tagged by provenance: `[F]` verified fact, `[I]` inference, `[S]` assumption/heuristic. Confidence: {50, 70, 80, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
+- **Epistemic provenance:** Operator beliefs tagged by provenance: `[F]` verified fact, `[I]` inference, `[S]` assumption/heuristic. Confidence: {50, 65, 70, 75, 80, 85, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
 
 ## Content standards
 
@@ -82,6 +82,17 @@ Any change to an OADC definition, duress protocol, safe-state specification, or 
 2. Impact analysis (CACE: changing anything changes everything)
 3. Documented blast radius assessment
 4. Two-person review sign-off
+
+## Design principles
+
+1. **Correctness > Safety > Auditability > Completeness > Speed**
+2. Authority is a contract, not a setting.
+3. Hostile is the default assumption.
+4. Degrade gracefully, halt safely.
+5. Auditability survives the event.
+6. Operator performance is a safety-critical function.
+7. Exercise or it does not exist.
+8. The schema is authoritative. Human-readable tables are rendered outputs, not the primary data plane.
 
 ## General guidance
 

@@ -63,7 +63,7 @@ The central governance construct. A formal table defining how operator authority
 
 ### Epistemic provenance
 
-Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] assumption/heuristic. Confidence levels: {50, 70, 80, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
+Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] assumption/heuristic. Confidence levels: {50, 65, 70, 75, 80, 85, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
 
 ### Evidence tagging
 
@@ -71,7 +71,7 @@ Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] ass
 [F] = verified fact
 [I] = inference
 [S] = heuristic or unresolved assumption
-Confidence = {50, 70, 80, 90}
+Confidence = {50, 65, 70, 75, 80, 85, 90}
 ```
 
 ## Content standards
@@ -137,6 +137,17 @@ Any change to an OADC definition, duress protocol, safe-state specification, or 
 2. Impact analysis: what does this change affect? (CACE: changing anything changes everything)
 3. Documented blast radius assessment
 4. Two-person review sign-off
+
+## Design principles
+
+1. **Correctness > Safety > Auditability > Completeness > Speed**
+2. Authority is a contract, not a setting.
+3. Hostile is the default assumption.
+4. Degrade gracefully, halt safely.
+5. Auditability survives the event.
+6. Operator performance is a safety-critical function.
+7. Exercise or it does not exist.
+8. The schema is authoritative. Human-readable tables are rendered outputs, not the primary data plane.
 
 ## AI-assistant guidance
 

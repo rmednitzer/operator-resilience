@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Pre-commit hook: run make validate before allowing commit.
+# Install: git config core.hooksPath .githooks
+
+set -e
+
+echo "Running pre-commit validation..."
+
+# Check 1: Run make validate
+if ! make validate > /dev/null 2>&1; then
+    echo "ERROR: make validate failed. Fix errors before committing."
+    make validate
+    exit 1
+fi
+
+# Check 2: Detect manual edits to generated register views.
+# If any registers/*.md file is staged but the corresponding
+# data/registers/*.yaml has an older modification time, warn.
+STAGED_REGISTERS=$(git diff --cached --name-only -- 'registers/*.md')
+if [ -n "$STAGED_REGISTERS" ]; then
+    for md_file in $STAGED_REGISTERS; do
+        base=$(basename "$md_file" .md)
+        yaml_file="data/registers/${base}.yaml"
+        if [ -f "$yaml_file" ]; then
+            # Check if the YAML file is also staged
+            if ! git diff --cached --name-only -- "$yaml_file" | grep -q .; then
+                echo "WARNING: $md_file is staged but $yaml_file is not."
+                echo "  Generated views should be updated by 'make render', not edited directly."
+                echo "  If this is intentional, use --no-verify to bypass."
+                exit 1
+            fi
+        fi
+    done
+fi
+
+echo "Pre-commit checks passed."

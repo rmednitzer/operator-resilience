@@ -17,7 +17,7 @@
 > | `[I,nn]` | Inference from available evidence; confidence nn% |
 > | `[S,nn]` | Assumption, heuristic, or unresolved uncertainty; confidence nn% |
 >
-> `nn` ∈ {50, 70, 80, 90}
+> `nn` ∈ {50, 65, 70, 75, 80, 85, 90}
 
 ---
 

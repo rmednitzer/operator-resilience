@@ -223,3 +223,13 @@ An event for which the review record is not complete within the applicable deadl
 ## Relationship to execution checklist
 
 The checklist at `checklists/post-event-review.md` is the execution tool used during an active review. It is not the authoritative process specification. This document governs. Where the checklist and this document conflict, this document takes precedence and the discrepancy is itself a corrective action to be resolved.
+
+---
+
+## Confidence notes
+
+- The review deadlines in §2 (24 h, 48 h, 72 h, 5 business days) are governance engineering estimates `[S,70]`; no single published standard prescribes review windows across this range of trigger types. Validate against operating-environment regulatory requirements and organizational capacity.
+- The 90-day rolling window for pattern recurrence is a governance threshold `[I,70]` derived from incident-recurrence principles; adjust per operational experience and safety/security lead assessment.
+- The requirement for review-lead independence from the affected operator (§5.1) is a well-established principle in safety investigation practice `[F,85]`.
+- The single 24-hour deadline extension mechanism is an administrative design choice `[S,65]`; environments with complex multi-site operations may need a more structured extension framework.
+- The three-event recurrence escalation threshold (§7.2) is an engineering estimate `[S,70]`; calibrate against operating-environment incident volume and organizational risk tolerance.
