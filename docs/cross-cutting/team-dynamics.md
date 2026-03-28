@@ -141,7 +141,7 @@ The team mode-state is further degraded by the following conditions:
 | Condition | Modifier |
 |-----------|----------|
 | Two H-1 operators sharing a buddy-pair | Pair operates as H-1, not H-0. Buddy-pair provides support but does not upgrade the team mode-state. |
-| > 50% of the team is at H-2 or below | Declare team-level OADC constraint tightening (incident commander authority per `docs/contracts/contestation-resistance.md` §4.4). All team members operate under H-2 constraints regardless of individual state. |
+| > 50% of the team is at H-2 or below | Declare team-level OADC constraint tightening (incident commander tightening authority per `docs/contracts/contestation-resistance.md` §4.4 — tightening only, not loosening). All team members operate under H-2 constraints regardless of individual state. |
 | Shared OOTL detected (§2, row 4) | Treat team mode-state as one level worse until at least one team member passes a state-check. |
 | Team sync point missed — information state not synchronized (§6) | Flag as information asymmetry condition. Do not proceed with high-consequence action until reconciliation is complete. |
 

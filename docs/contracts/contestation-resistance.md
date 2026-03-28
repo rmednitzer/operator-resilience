@@ -58,7 +58,7 @@ For each contestation vector, the following resistance patterns are pre-committe
 **Implementation:**
 - An operator who believes their situation is exceptional shall log that belief in the decision record with full epistemic tagging (`[I]` or `[S]`, with confidence and supporting evidence).
 - The decision to apply the OADC is not subject to operator veto. The incident commander or safety lead may note the operator's concern for post-event review.
-- All exception claims are reviewed post-event under REV-nnn. If the exception was warranted, it informs a OADC parameter change via the safety-critical change process.
+- All exception claims are reviewed post-event under REV-nnn (post-event review record; see `data/registers/` for canonical entries). If the exception was warranted, it informs an OADC parameter change via the safety-critical change process.
 - "Exceptional" incidents that trigger contestation more than once in a review cycle are an indicator that the OADC parameters need revision — not that exception claims should be granted.
 
 ### 3.2 — CV-2: Parameter stability
@@ -161,7 +161,7 @@ The following OADC elements are frozen once an incident is declared and cannot b
 
 ### 4.4 — What can be adjusted in-incident (tightening only)
 
-The incident commander may **tighten** (but not loosen) OADC constraints in-incident if the environment deteriorates beyond the parameters that were current when the OADC was set:
+The incident commander may **tighten** (but not loosen) OADC constraints in-incident if the environment deteriorates beyond the parameters that were current when the OADC was set. For team-level applications of this authority (e.g., when > 50% of the team is at H-2 or below), see `docs/cross-cutting/team-dynamics.md` §4.2.
 
 - Lower the effective `N` or `T` threshold (treat as if more time has elapsed than has).
 - Expand the set of actions requiring second-person approval.
