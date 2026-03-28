@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Scope:** Formal interface definition between operator-resilience governance and platform-side authority governance. Maps OADC state to authority permission sets, H-state to system operating modes, and epistemic state to connectivity state. These mappings are deployment-specific and defined per OADC instance.
 **Status:** DRAFT
-**Referenced by:** `docs/contracts/oadc.md`; `docs/resilience/h-state-table.md`; `docs/epistemics/belief-provenance.md`; `docs/integration/stpa-uca.md`; `artifact-index.yaml`
+**Referenced by:** README.md §System integration; `artifact-index.yaml`
 **Companion repository:** [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance) (authority levels AL-0 to AL-8)
 
 ---
@@ -41,15 +41,21 @@ The mapping is one-directional: OADC conditions constrain the permission set; th
 | OADC condition (from `docs/contracts/oadc.md` §2) | Authority permission set | Notes |
 |---|---|---|
 | No active OADC condition (H-0, all thresholds nominal) | Full authority: operator may initiate, confirm, or veto any authorized platform action | Baseline state |
+| On-call duration > N hours | Full authority for standard actions; second-person required for irreversible high-consequence actions | Buddy-pair must be confirmed before irreversible action proceeds |
+| Incident duration > T hours | No solo irreversible actions; all high-consequence actions require co-authorization (buddy-pair mandatory) | Platform gate: co-authorization token from second operator required; amplifying condition for H-state (one-H-state-worse per h-state-table.md §6) |
 | Single information source for key claim | Can confirm but cannot initiate high-consequence actions on single-source basis | Requires second independent source before high-consequence initiation |
-| On-call duration > N hours (H-1 range) | Full authority for standard actions; second-person required for irreversible high-consequence actions | Buddy-pair must be confirmed before irreversible action proceeds |
-| Buddy-pair required condition active | No solo irreversible actions; all high-consequence actions require co-authorization | Platform gate: co-authorization token from second operator required |
-| H-2 (extended duration, two or more degradation conditions) | Monitoring and advisory only; no unilateral initiation of new actions; all actions require supervisor confirmation | Platform should present advisory mode to operator; all action requests queued for supervisor |
+| Time pressure below minimum review threshold | Pre-committed decision tree only; no novel authority; platform restricts available actions to pre-authorized set | Platform presents decision tree interface; blocks novel action initiation |
+| Communication from unverified authority | Hold: no action on unverified instruction; platform blocks execution of commands from unverified source until second-channel authentication completes | Platform gate: source authentication required before command execution |
+| Operator self-reports degradation | Authority narrows to match declared H-state; authority transfers to alternate if declared H-3+ | Triggers H-state assessment; platform adjusts mode per Mapping B |
+| Epistemic degradation markers detected | Narrowed authority; peer validation required for all decisions; no independent consequential action | Platform queues all actions for peer validation before execution |
+| Contested operating environment | Two-person rule for all consequential actions; no single-operator high-consequence authority | Platform gate: all consequential actions require dual authorization |
+| Extended passive monitoring > `passive_monitoring_interval` | State-check required before any intervention; no new actions until state-check passed | Platform prompts state-check; blocks new action initiation until check confirmed |
+| Circadian low (within `circadian_window` or woken from sleep) | Treat operator as one H-state worse than assessed; apply corresponding permission set from Mapping B at the effective (amplified) H-state | Platform applies amplified H-state for mode selection; amplifying condition per h-state-table.md §6 |
+| Organizational stress (declared by management or security) | Tighten contract for all operators: lower thresholds for two-person rule; all operators operate under at least H-1 constraints | Amplifying condition for H-state (one-H-state-worse per h-state-table.md §6); platform applies tightened thresholds across all operator sessions |
+| **Derived conditions** | | |
 | H-3 or H-4, alternate available | Authority transferred to alternate; operator has no platform authority until return-to-duty confirmed | Platform revokes operator session authority; alternate's session becomes authoritative |
 | H-3/H-4 or any authority transfer, no alternate | Operator-absent safe state; no operator platform authority | Platform transitions to safe state per `docs/cross-cutting/safe-state.md` |
-| Contested environment declared | Two-person rule for all consequential actions; no single-operator high-consequence authority | Platform gate: all consequential actions require dual authorization |
-| Duress event: authority containment invoked | Operator authority contained; platform executes authority transfer to confirmed-clear alternate | Platform receives containment signal; operator's ability to issue consequential commands suspended |
-| Extended passive monitoring > `passive_monitoring_interval` | State-check required before any intervention; no new actions until state-check passed | Platform prompts state-check; blocks new action initiation until check confirmed |
+| Duress event: authority containment invoked (from `docs/adversarial/duress-protocol-spec.md`) | Operator authority contained; platform executes authority transfer to confirmed-clear alternate | Platform receives containment signal; operator's ability to issue consequential commands suspended |
 
 ### 2.2 — Mapping B: H-state → system operating mode
 
@@ -59,15 +65,19 @@ This is not simply a matter of what the operator requests. The platform shall op
 
 **Indicative mapping table (populated per OADC instance):**
 
-| Operator H-state | Platform system operating mode | Platform behavior |
-|---|---|---|
-| H-0 (full capacity) | **Full operation** | Platform executes all authorized actions as directed; operator has full authority within OADC permission set |
-| H-1 (mild degradation: fatigue advisory, minor performance indicators) | **Full operation + advisory** | Platform provides additional confirmation prompts for high-consequence actions; logs H-1 advisory in audit trail; no restriction on authority |
-| H-2 (moderate degradation: sustained duty > N, multiple conditions, two or more OADC conditions) | **Supervised operation** | All autonomous actions require explicit per-action operator confirmation; platform does not proceed on prior authorization; novel actions queued for supervisor endorsement |
-| H-3 (severe degradation: mandatory handoff condition) | **Autonomous hold** | Platform holds current state; suspends all new mission or action initiation; continues existing committed actions only if pre-authorized as safe-to-complete; awaits confirmed alternate or safe-state transition |
-| H-4 (incapacitated) or no qualified alternate | **Operator-absent safe state** | Platform enters safe state per `docs/cross-cutting/safe-state.md`; no new operator-directed actions until return-to-duty and authority restoration confirmed |
+| Operator H-state | Platform system operating mode | Companion repo M-state range (indicative) | Platform behavior |
+|---|---|---|---|
+| H-0 (full capacity) | **Full operation** | M0 (Normal) | Platform executes all authorized actions as directed; operator has full authority within OADC permission set |
+| H-1 (mild degradation: fatigue advisory, minor performance indicators) | **Full operation + advisory** | M0–M1 (Normal to Reduced capability) | Platform provides additional confirmation prompts for high-consequence actions; logs H-1 advisory in audit trail; no restriction on authority |
+| H-2 (moderate degradation: sustained duty > N, multiple conditions, two or more OADC conditions) | **Supervised operation** | M2–M3 (Extended degraded to CDIL sustained) | All autonomous actions require explicit per-action operator confirmation; platform does not proceed on prior authorization; novel actions queued for supervisor endorsement |
+| H-3 (severe degradation: mandatory handoff condition) | **Autonomous hold** | M4–M5 (Return to home to Emergency hover/hold) | Platform holds current state; suspends all new mission or action initiation; continues existing committed actions only if pre-authorised as safe-to-complete; awaits confirmed alternate or safe-state transition |
+| H-4 (incapacitated) or no qualified alternate | **Operator-absent safe state** | M5–M6 (Emergency hover/hold to Safe halt) | Platform enters safe state per `docs/cross-cutting/safe-state.md`; no new operator-directed actions until return-to-duty and authority restoration confirmed |
 
 > **Transition direction:** H-state degradation transitions (H-0 → H-4) take effect immediately upon assessment. H-state upgrade transitions (H-4 → H-0) take effect only after return-to-duty protocol is complete and the H-state upgrade declaration has been issued per `docs/cross-cutting/return-to-duty.md` §3 Step 2c.
+>
+> **M-state cross-reference:** M-states (M0–M6) are defined in the companion repository's `docs/safety/degraded-mode-hierarchy.md`. The M-state column is indicative `[I,65]`; the actual H-state-to-M-state mapping depends on the specific platform capability and must be established per deployment. Note: M-states also account for platform-only failures (sensor degradation, actuator faults) independently of operator H-state. The bridge governs only the operator-driven component of M-state selection.
+>
+> **Amplifying conditions:** When an amplifying condition is active (circadian low, extended incident, organisational stress per `docs/resilience/h-state-table.md` §6), the platform shall use the **effective (amplified) H-state**, not the observed H-state, for mode selection. For example, an operator assessed at H-1 with an active circadian amplifier is treated as H-2 for platform mode purposes.
 
 ### 2.3 — Mapping C: Epistemic state → connectivity state
 
