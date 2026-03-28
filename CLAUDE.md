@@ -138,6 +138,17 @@ Any change to an OADC definition, duress protocol, safe-state specification, or 
 3. Documented blast radius assessment
 4. Two-person review sign-off
 
+## Design principles
+
+1. **Correctness > Safety > Auditability > Completeness > Speed**
+2. Authority is a contract, not a setting.
+3. Hostile is the default assumption.
+4. Degrade gracefully, halt safely.
+5. Auditability survives the event.
+6. Operator performance is a safety-critical function.
+7. Exercise or it does not exist.
+8. The schema is authoritative. Human-readable tables are rendered outputs, not the primary data plane.
+
 ## AI-assistant guidance
 
 - Treat this as a high-assurance documentation repo.
