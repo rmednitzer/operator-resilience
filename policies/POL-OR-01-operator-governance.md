@@ -21,11 +21,12 @@ All operators in roles where their decisions can cause or fail to prevent a high
 3. All high-consequence decisions shall be logged using the pre-decision epistemic check format: assumptions (tagged [F], [I], or [S]), constraints, unknowns, and confidence level.
 4. If decision confidence is below 70%, the operator shall state what checks would raise it and proceed only with safe, reversible partial actions.
 5. Duress protocols shall be pre-established, trained, and tested (minimum annual) for all operating environments where coercion is a credible threat.
-6. When no operator meeting OADC requirements is available, the system shall enter a pre-defined operator-absent safe state. Safe states must be defined, documented, and tested before operational use.
+6. When no operator meeting OADC requirements is available, the system shall enter a pre-defined operator-absent safe state. Safe states shall be defined per the framework in docs/cross-cutting/safe-state.md, documented, and validated by exercise (exercise type: safe-state-test) before operational use.
 7. Operator degradation to H-3 or H-4 triggers mandatory handoff. If no alternate is available, the system enters safe state.
 8. All OADC trigger events, break-glass exceptions, duress signals, and H-state assessments are logged as evidence with timestamps and rationale.
-9. Post-event review is mandatory within defined timelines for all OADC triggers, duress events, break-glass exceptions, and H-3/H-4 events.
+9. Post-event review is mandatory within defined timelines for all OADC triggers, duress events, break-glass exceptions, and H-3/H-4 events. Default review deadlines (calendar hours, not business hours): H-3/H-4 events: within 24 hours; duress events: within 48 hours; OADC threshold triggers: within 72 hours; break-glass exceptions: within 72 hours.
 10. Exercise programs shall validate operator-resilience controls on the cadences defined in the exercise program. Controls not exercised within their cadence are assumed non-functional.
+11. Before operational deployment in any context where operator decision logs, H-state assessments, or duress event records contain personal data, a Data Protection Impact Assessment (DPIA) shall be completed per GDPR Art. 35 (or equivalent applicable data-protection law). H-state assessments may constitute processing of health-related personal data and must be treated as such until assessed otherwise. The DPIA must identify the lawful basis for processing, assess risks to operators' rights and freedoms, and document mitigation measures.
 
 ## Roles and responsibilities
 
@@ -56,8 +57,12 @@ Indicative mapping — applicability depends on sector, entity classification, a
 | Operator duty limits, daily and weekly rest | EU Working Time Directive (Dir. 2003/88/EC) | OADC §§1–2; circadian §10 |
 | Mental workload and fatigue management | ISO 10075 series | H-state table; OADC duty limits |
 
+| GDPR Art. 35 DPIA requirement | GDPR (Reg. 2016/679) | Policy stmt 11: DPIA before operational deployment |
+| Operator-absent safe state | EU AI Act Art. 14(4)(e) | Policy stmt 6; docs/cross-cutting/safe-state.md |
+| Exercise and validation of controls | EU AI Act Art. 9(2) | Policy stmt 10; docs/exercise/exercise-program.md |
+
 ## Review log
 
 | Date | Version | Approved by | Notes |
 |------|---------|-------------|-------|
-| YYYY-MM-DD | 1.0 DRAFT | — | Initial draft |
+| 2026-03-28 | 1.0 DRAFT | — | Initial draft; added DPIA stmt 11, strengthened stmts 6 and 9, extended compliance mapping |
