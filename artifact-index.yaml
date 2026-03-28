@@ -37,6 +37,11 @@ artifacts:
     scope: operator-authority-degradation-contract
     status: draft
 
+  - path: docs/contracts/contestation-resistance.md
+    artifact_type: normative
+    scope: oadc-contestation-resistance-meta-contract-verification
+    status: draft
+
   - path: docs/adversarial/threat-model.md
     artifact_type: normative
     scope: adversarial-threat-model-operator-targeting
@@ -60,6 +65,11 @@ artifacts:
   - path: docs/cross-cutting/safe-state.md
     artifact_type: normative
     scope: operator-absent-safe-state-specification-framework
+    status: draft
+
+  - path: docs/cross-cutting/team-dynamics.md
+    artifact_type: normative
+    scope: team-dynamics-collective-cognitive-governance
     status: draft
 
   - path: schemas/common.schema.json
