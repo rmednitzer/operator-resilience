@@ -3,7 +3,7 @@
 **Date:** 2026-03-28
 **Scope:** Defines operator-absent safe state: triggers, specification framework, testing requirements, return procedure, and context-specific examples. Establishes the normative definition required by Policy Statement 6.
 **Status:** DRAFT
-**Referenced by:** POL-OR-01 statement 6; `docs/resilience/h-state-table.md` §H-3, §H-4; `docs/contracts/oadc.md` §2; `docs/exercise/exercise-program.md` §10; README.md §System integration
+**Referenced by:** POL-OR-01 statement 6; `docs/resilience/h-state-table.md` §H-3, §H-4; `docs/contracts/oadc.md` §2; `docs/exercise/exercise-program.md` §10; README.md §Cognitive resilience, §Getting started
 
 ---
 
