@@ -83,8 +83,8 @@ Transposition deadline 2024-10-17. Applies to essential and important entities i
 
 | NIS2 provision | Repository control | Alignment |
 |---|---|---|
-| Art. 23(4)(a): early warning within 24 hours of becoming aware of significant incident | Policy stmt 9: mandatory post-event review within defined timelines; OADC trigger events produce timestamped evidence | Direct — OADC trigger events and evidence logs provide the data needed for early-warning reports |
-| Art. 23(4)(b): incident notification without undue delay, within 72 hours | Post-event review; decision logs; H-state assessment records | Direct — evidence pipeline supports structured incident notification |
+| Art. 23(4)(a): early warning within 24 hours of becoming aware of significant incident | OADC trigger events and evidence logs produce timestamped data that supports early-warning reports | Supportive — this repo provides the evidence; external notification to competent authorities is the deploying organisation's responsibility |
+| Art. 23(4)(b): incident notification without undue delay, within 72 hours | Post-event review; decision logs; H-state assessment records | Supportive — evidence pipeline provides structured data for incident notification; the notification procedure itself is out of scope |
 
 **Recital 79:** Explicitly calls for "human resources security" and "appropriate access control policies" as part of cybersecurity risk management. The OADC is an operationalisation of access control that degrades with operator state — a refinement beyond static RBAC.
 
@@ -309,7 +309,7 @@ This cross-reference was produced by:
 - EU AI Act, NIS2, CER, DORA, CRA, PLD, Machinery Reg, GDPR, Seveso III: verified against EUR-Lex consolidated texts [F,90]
 - EU Working Time Directive: verified against EUR-Lex [F,90]
 - NATO STANAGs, HFM-322: based on STO and NATO standardisation office publications [S,80]
-- MIL-STD-882E Task 401 characterisation: corrected from "accountability/logging" to "Safety Verification"; Change 1 (September 2023) noted [F,90]
+- MIL-STD-882E Task 401 characterisation: corrected from "accountability/logging" to "Safety assessment"; Change 1 (September 2023) noted [F,90]
 - DoD Directive 3000.09: verified; terminology corrected from "meaningful human control" to "appropriate levels of human judgment over the use of force" [F,90]
 - ISO standards: confirmed current editions and relevance [F,85]
 - IEC 62443: confirmed as OT cybersecurity baseline [F,85]
