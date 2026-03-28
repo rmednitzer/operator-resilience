@@ -48,13 +48,11 @@ Current canonical registers:
 7. **Exercise or it does not exist.**
 8. **The schema is authoritative.** Human-readable tables are rendered outputs, not the primary data plane.
 
-## Companion repositories
+## Companion repository
 
-This repository is standalone and environment-agnostic but complements the following governance repos by the same owner:
+This repository is standalone and environment-agnostic but complements the following governance repo by the same owner:
 
 - [`autonomous-platform-assurance`](https://github.com/rmednitzer/autonomous-platform-assurance): platform authority hierarchy (AL-0 to AL-8), CDIL operation, hostile-environment security, disconnected key management, and mission safety. The OADC governs the operator side of the authority boundary; AL governs the platform side.
-- [`platform-assurance`](https://github.com/rmednitzer/platform-assurance): ground-side IT, evidence pipeline, IAM, observability, NIS2 and organisational controls.
-- [`cps-assurance`](https://github.com/rmednitzer/cps-assurance): functional safety lifecycle, OT and ICS security, product conformity, and EU product regulation overlays.
 
 ## Integration interfaces
 
