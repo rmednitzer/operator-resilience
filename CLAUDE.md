@@ -20,8 +20,7 @@ operator-resilience/
 │   ├── adversarial/               # Threat model, insider threat, duress, comms security
 │   ├── cross-cutting/             # Team dynamics, post-event review, safe state, return-to-duty
 │   ├── exercise/                  # Exercise program, acceptance criteria
-│   ├── integration/               # STPA UCAs, regulatory cross-reference, system bridge
-│   └── generated/                 # Auto-generated views (do not edit)
+│   └── integration/               # STPA UCAs, regulatory cross-reference, system bridge
 ├── policies/
 ├── registers/                     # Generated Markdown views; do not edit directly
 ├── data/registers/                # Canonical YAML register sources
