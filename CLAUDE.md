@@ -7,19 +7,17 @@
 - After any register, schema, or generator change, run `make all` (renders, then validates).
 - Treat any change to OADC, duress protocols, safe-state specifications, or H-state thresholds as **safety-critical** — two-person review and CACE impact analysis required.
 - All commits must be signed (GPG or SSH) with a conventional-commit prefix.
-- Every new artifact must be registered in [`artifact-index.yaml`](artifact-index.yaml) — `make validate` will fail otherwise.
+- Every new artifact must be registered in [`artifact-index.yaml`](artifact-index.yaml). `make validate` enforces that every indexed path resolves and that entries are unique, but it does **not** detect unindexed files — registration is the author's responsibility.
 
 ## Project overview
 
 This repository contains governance artifacts for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions. The core construct is the **operator–authority–auditability triangle** — the operator is treated as a governed boundary with formal authority contracts, epistemic integrity requirements, degradation modes, and evidence capture.
 
-| | |
-|---|---|
-| **Owner** | Roman Mednitzer |
-| **License** | Apache-2.0 (see [LICENSE](LICENSE)) |
-| **Operational context** | IT/SRE, OT/ICS, autonomous platforms, military / first-responder operations — standalone, environment-agnostic |
-| **Companion repo** | [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance) — platform-side authority hierarchy (AL-0 → AL-8). The OADC governs the operator side of the boundary; AL governs the platform side. |
-| **Primary entry points** | [README.md](README.md), [`docs/contracts/oadc.md`](docs/contracts/oadc.md), [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md) |
+- **Owner:** Roman Mednitzer
+- **License:** Apache-2.0 (see [LICENSE](LICENSE))
+- **Operational context:** IT/SRE, OT/ICS, autonomous platforms, military / first-responder operations — standalone, environment-agnostic
+- **Companion repo:** [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance) — platform-side authority hierarchy (AL-0 → AL-8). The OADC governs the operator side of the boundary; AL governs the platform side.
+- **Primary entry points:** [README.md](README.md), [`docs/contracts/oadc.md`](docs/contracts/oadc.md), [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md)
 
 ## Repository structure
 
@@ -55,7 +53,7 @@ operator-resilience/
 |---------|---------|
 | `make all` | Render canonical YAML to Markdown views, then validate (sequential) |
 | `make render` | Generate `registers/*.md` from `data/registers/*.yaml` |
-| `make validate` | Schema validation + cross-reference checks + Markdown link checks + render-drift detection + artifact-index check |
+| `make validate` | Schema validation, cross-reference checks, Markdown link checks, render-drift detection, and artifact-index integrity (listed paths must exist; no duplicates) |
 | `make help` | Print Makefile help |
 
 **Dependencies:** `pip install pyyaml jsonschema` (Python 3.12+ recommended; matches CI).
