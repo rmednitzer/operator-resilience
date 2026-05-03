@@ -1,13 +1,25 @@
 # CLAUDE.md — AI Assistant Guide for operator-resilience
 
+## TL;DR for AI assistants
+
+- This is a **governance-as-code** repository, not application code. Primary deliverables are Markdown documents, JSON Schemas, canonical YAML registers, and Python validation/rendering scripts.
+- **Canonical data lives in `data/registers/*.yaml`.** The Markdown files in `registers/` are generated views — never edit them by hand.
+- After any register, schema, or generator change, run `make all` (renders, then validates).
+- Treat any change to OADC, duress protocols, safe-state specifications, or H-state thresholds as **safety-critical** — two-person review and CACE impact analysis required.
+- All commits must be signed (GPG or SSH) with a conventional-commit prefix.
+- Every new artifact must be registered in [`artifact-index.yaml`](artifact-index.yaml) — `make validate` will fail otherwise.
+
 ## Project overview
 
-This repository contains governance artifacts for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions. It is a governance-as-code repository, not an application codebase. The primary deliverables are Markdown documents, JSON Schemas, canonical YAML registers, and validation scripts.
+This repository contains governance artifacts for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions. The core construct is the **operator–authority–auditability triangle** — the operator is treated as a governed boundary with formal authority contracts, epistemic integrity requirements, degradation modes, and evidence capture.
 
-**Owner:** Roman Mednitzer
-**License:** MIT
-**Operational context:** IT/SRE, OT/ICS, autonomous platforms, military/first-responder operations — standalone, environment-agnostic
-**Companion repo:** [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance)
+| | |
+|---|---|
+| **Owner** | Roman Mednitzer |
+| **License** | Apache-2.0 (see [LICENSE](LICENSE)) |
+| **Operational context** | IT/SRE, OT/ICS, autonomous platforms, military / first-responder operations — standalone, environment-agnostic |
+| **Companion repo** | [autonomous-platform-assurance](https://github.com/rmednitzer/autonomous-platform-assurance) — platform-side authority hierarchy (AL-0 → AL-8). The OADC governs the operator side of the boundary; AL governs the platform side. |
+| **Primary entry points** | [README.md](README.md), [`docs/contracts/oadc.md`](docs/contracts/oadc.md), [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md) |
 
 ## Repository structure
 
@@ -20,122 +32,209 @@ operator-resilience/
 │   ├── adversarial/               # Threat model, insider threat, duress, comms security
 │   ├── cross-cutting/             # Team dynamics, post-event review, safe state, return-to-duty
 │   ├── exercise/                  # Exercise program, acceptance criteria
-│   └── integration/               # STPA UCAs, regulatory cross-reference, system bridge
-├── policies/
-├── registers/                     # Generated Markdown views; do not edit directly
-├── data/registers/                # Canonical YAML register sources
-├── templates/
-│   ├── decision-log/
-│   ├── oadc/
-│   ├── duress-protocol/
-│   ├── exercise/
-│   ├── return-to-duty/
-│   └── team-contract/
-├── checklists/
-├── schemas/
-├── scripts/
-├── artifact-index.yaml
-├── Makefile
+│   └── integration/               # STPA UCAs, regulatory cross-reference, autonomous-system bridge
+├── policies/                      # Governance policies (DRAFT until owner-approved)
+├── data/registers/                # Canonical YAML register sources — EDIT THESE
+├── registers/                     # Generated Markdown views — DO NOT EDIT
+├── schemas/                       # JSON Schemas (Draft 2020-12) for register entries
+├── templates/                     # Approved patterns: OADC, duress, exercise, decision-log, etc.
+├── checklists/                    # Pre-incident readiness, post-event review
+├── scripts/                       # validate_repo.py, generate_register_views.py
+├── .githooks/                     # pre-commit (validate + render-drift guard)
+├── .github/                       # CI workflow, CODEOWNERS, SECURITY, issue/PR templates
+├── artifact-index.yaml            # Single source of truth for all tracked artifacts
+├── Makefile                       # `make render`, `make validate`, `make all`, `make help`
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
 ```
 
+## Commands and workflow
+
+| Command | Purpose |
+|---------|---------|
+| `make all` | Render canonical YAML to Markdown views, then validate (sequential) |
+| `make render` | Generate `registers/*.md` from `data/registers/*.yaml` |
+| `make validate` | Schema validation + cross-reference checks + Markdown link checks + render-drift detection + artifact-index check |
+| `make help` | Print Makefile help |
+
+**Dependencies:** `pip install pyyaml jsonschema` (Python 3.12+ recommended; matches CI).
+
+**Local pre-commit hook (recommended):**
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The hook in [`.githooks/pre-commit`](.githooks/pre-commit) runs `make validate` and refuses any commit that stages a `registers/*.md` file without staging the corresponding `data/registers/*.yaml`.
+
+**CI:** [`.github/workflows/validate.yml`](.github/workflows/validate.yml) re-renders, fails if generated views are out of date, then runs `make validate` on every push and pull request to `main`.
+
 ## Canonical editing rules
 
 - Canonical register content lives in `data/registers/*.yaml`.
 - Markdown files under `registers/` are generated by `scripts/generate_register_views.py`.
-- Do not manually edit generated register views.
-- After any canonical-register change, run:
-  - `python3 scripts/generate_register_views.py`
-  - `python3 scripts/validate_repo.py`
+- **Do not manually edit generated register views.** The pre-commit hook and CI will reject the change.
+- After any canonical-register change:
+  1. `make render` (or directly `python3 scripts/generate_register_views.py`)
+  2. `make validate` (or directly `python3 scripts/validate_repo.py`)
+  3. Stage **both** the YAML source and the regenerated Markdown view in the same commit.
+- Add every new normative or canonical-data artifact to [`artifact-index.yaml`](artifact-index.yaml).
 
 ## Key concepts
 
 ### H-state (H-0 to H-4)
 
-The human mode-state — analogous to a system degraded-mode hierarchy. Defines operator cognitive capacity levels from full capacity (H-0) through incapacitated (H-4). Each level has defined indicators, decision authority limits, and required support.
+Human mode-state — analogous to a system degraded-mode hierarchy. Defines operator cognitive capacity from full capacity (H-0) through incapacitated (H-4). Each level has defined indicators, decision-authority limits, and required support. See [`docs/resilience/h-state-table.md`](docs/resilience/h-state-table.md).
 
 ### OADC (Operator Authority Degradation Contract)
 
-The central governance construct. A formal table defining how operator authority narrows as conditions degrade. Parameters are set per operating environment in advance, not during incidents.
+The central governance construct. A formal table defining how operator authority narrows as conditions degrade. Parameters are set per operating environment **in advance, not during incidents**. See [`docs/contracts/oadc.md`](docs/contracts/oadc.md). Each instance is an entry in `data/registers/oadc-register.yaml`.
 
-### Epistemic provenance
-
-Operator beliefs tagged by provenance: [F] verified fact, [I] inference, [S] assumption/heuristic. Confidence levels: {50, 65, 70, 75, 80, 85, 90}. If confidence < 70%: state checks to reach ≥ 70%; provide safe reversible partial.
-
-### Evidence tagging
+### Epistemic provenance and evidence tagging
 
 ```text
 [F] = verified fact
 [I] = inference
 [S] = heuristic or unresolved assumption
-Confidence = {50, 65, 70, 75, 80, 85, 90}
+Confidence ∈ {50, 65, 70, 75, 80, 85, 90}
 ```
+
+If confidence < 70%: state the checks needed to reach ≥ 70%; provide a safe, reversible partial action. See [`docs/epistemics/belief-provenance.md`](docs/epistemics/belief-provenance.md).
+
+### Operator-absent safe state
+
+When no operator meeting OADC requirements is available, the system enters a pre-defined safe state. Safe states must be defined per the framework in [`docs/cross-cutting/safe-state.md`](docs/cross-cutting/safe-state.md) and validated by exercise type `safe-state-test` before operational use.
+
+### Post-event review deadlines (calendar hours, per POL-OR-01 §9)
+
+| Trigger | Deadline |
+|---------|----------|
+| H-3 / H-4 events | 24 h |
+| Duress events | 48 h |
+| OADC threshold triggers | 72 h |
+| Break-glass exceptions | 72 h |
+
+### DPIA requirement
+
+H-state assessments may constitute processing of health-related personal data. Per [POL-OR-01 §11](policies/POL-OR-01-operator-governance.md), a Data Protection Impact Assessment (GDPR Art. 35 or equivalent) must be completed before operational deployment in any context where decision logs, H-state assessments, or duress event records contain personal data.
+
+## Register IDs and cross-references
+
+| Prefix | Register | Schema |
+|--------|----------|--------|
+| `OADC-nnn` | `data/registers/oadc-register.yaml` | `schemas/oadc-entry.schema.json` |
+| `HSE-nnn`  | `data/registers/h-state-event-register.yaml` | `schemas/h-state-event.schema.json` |
+| `DUR-nnn`  | `data/registers/duress-event-register.yaml`  | `schemas/duress-event.schema.json` |
+| `EXR-nnn`  | `data/registers/exercise-register.yaml`      | `schemas/exercise-record.schema.json` |
+| `REV-nnn`  | `data/registers/review-register.yaml`        | `schemas/review-record.schema.json` |
+
+Cross-reference invariants (enforced by `scripts/validate_repo.py`):
+
+- `review-record.event_ref` → must resolve to an existing `HSE-`, `DUR-`, `EXR-`, or other indexed entry.
+- `duress-event.review_ref` → must resolve to an existing `REV-` entry.
+- All register entry IDs must be globally unique across registers.
+- Every entry must validate against its JSON Schema (Draft 2020-12).
+
+## Schema-required fields (quick reference)
+
+All schemas inherit common fields (`id`, `object_type`, `status`) from `schemas/common.schema.json`. Additional required fields per entry:
+
+| Schema | Required (beyond common) |
+|--------|--------------------------|
+| `oadc-entry` | `environment`, `parameters` (with `max_duty_hours`, `max_incident_hours`) |
+| `h-state-event` | `operator_id`, `timestamp`, `to_state`, `trigger`, `assessment_method` |
+| `duress-event` | `timestamp`, `environment`, `event_class`, `signal_type`, `operator_id`, `detected_by` |
+| `exercise-record` | `exercise_type`, `date`, `acceptance_criteria_met`, `facilitator` |
+| `review-record` | `event_type`, `event_date`, `review_date`, `review_lead` |
+
+`status` enum: `draft` / `active` / `retired`. Schemas use `unevaluatedProperties: false` — extra fields will fail validation.
 
 ## Content standards
 
 - Use locale-neutral English (American spelling as default; deployment context may override).
 - Use `H-n` notation consistently for human mode-states.
 - Policies remain `DRAFT` unless explicitly approved by the repo owner.
-- For volatile regulations or standards, prefer scoping language over categorical claims.
-- Mark classified or authority-controlled specifics as Unknown rather than guessing.
+- For volatile regulations or standards, prefer scoping language ("indicative mapping — applicability depends on...") over categorical claims.
+- Mark classified or authority-controlled specifics as `Unknown` rather than guessing.
+- Use placeholders like `[Name]`, `[OADC-nnn]`, `YYYY-MM-DD` in templates and examples — never real personal data.
 
-## When editing registers
+## Editing playbook
 
-- Edit the YAML source, not the generated Markdown file.
-- Preserve ID formats exactly:
-  - `OADC-nnn` — Operator Authority Degradation Contract instances
-  - `HSE-nnn` — H-state events
-  - `DUR-nnn` — Duress events
-  - `EXR-nnn` — Exercise records
-  - `REV-nnn` — Post-event review records
-- Keep cross-references bidirectional where the schema expects them.
+### When editing canonical registers
 
-## When editing policies
+- Edit the YAML source under `data/registers/`, not the generated Markdown.
+- Preserve register ID formats and cross-reference invariants.
+- Run `make all` and stage **both** the YAML and the regenerated MD in one commit.
 
-- Policies are operationally sensitive. Preserve `DRAFT` status markers.
+### When editing schemas
+
+- Schemas under `schemas/*.json` use JSON Schema Draft 2020-12.
+- Treat as a structural change — peer review + CISO required (see Review requirements below).
+- Run `make validate` afterward; existing register entries must still pass.
+- If the change tightens constraints, audit existing entries for compatibility before merging.
+
+### When editing policies
+
+- Preserve the `DRAFT` status marker until owner-approved.
 - Do not weaken OADC constraints, duress protocols, or safe-state definitions.
-- Do not introduce blanket statements about regulatory applicability where scoping is conditional.
+- Keep the DPIA requirement (POL-OR-01 §11) intact.
+- Keep regulatory cross-references scoped, not categorical.
+
+### When adding a new artifact
+
+1. Create the file in the correct directory (see Repository structure).
+2. Add an entry to [`artifact-index.yaml`](artifact-index.yaml) with the right `artifact_type` (`normative` / `canonical-data` / `rendered-view` / `approved-pattern`), `scope`, and `status`.
+3. Use established naming patterns: kebab-case for docs; `TEMPLATE-...` for templates; `POL-OR-NN-...` for policies.
+4. Run `make validate`.
 
 ## Commit conventions
 
 Use **conventional commits** with these prefixes:
-- `feat:` — New governance artifact or capability
-- `fix:` — Corrections to existing artifacts
-- `docs:` — Documentation changes (docs/ directory)
-- `policy:` — Policy changes (policies/ directory)
-- `register:` — Register updates (registers/ directory)
-- `schema:` — Schema changes (schemas/ directory)
 
-All commits should be signed (GPG or SSH): `git commit -S`
+| Prefix | Use for |
+|--------|---------|
+| `feat:` | New governance artifact or capability |
+| `fix:` | Corrections to existing artifacts |
+| `docs:` | Documentation changes (`docs/` and other non-critical narrative) |
+| `policy:` | Policy changes (`policies/`) |
+| `register:` | Register updates (`data/registers/` and regenerated `registers/`) |
+| `schema:` | Schema changes (`schemas/`) |
+| `chore:` | Tooling, repo hygiene, build (not user-facing artifacts) |
+| `ci:` | CI workflow / automation changes (`.github/workflows/`) |
 
-Policy approvals get a signed tag: `policy/POL-OR-XX-vN.N`
+All commits must be signed (GPG or SSH): `git commit -S`.
+
+Policy approvals get a signed tag: `policy/POL-OR-XX-vN.N` after management sign-off.
 
 ## Branch model
 
-- `main` — Approved, current state of governance
-- `draft/*` — Work in progress (policies under review, register updates)
-- No direct pushes to `main` — merge requests only
+- `main` — approved, current state of governance
+- `draft/*` — work in progress (policies under review, register updates)
+- No direct pushes to `main` — pull requests only (CODEOWNERS approval enforced; see [`.github/CODEOWNERS`](.github/CODEOWNERS))
 
 ## Review requirements by path
 
-| Path | Review required | Approver |
-|------|----------------|----------|
-| `policies/` | Legal review + CISO + management approval | CISO signs tag |
-| `data/registers/` | CISO or register owner | Merge request review |
-| `docs/` | Peer review (1 reviewer minimum) | Any team member |
-| `templates/`, `checklists/` | CISO review | Merge request review |
-| `schemas/` | Peer review + CISO | Treat as structural change |
+Reflects the change classification in [CONTRIBUTING.md](CONTRIBUTING.md):
+
+| Class | Paths | Review required | Approver |
+|-------|-------|-----------------|----------|
+| Safety-critical | `data/registers/oadc-*`, `docs/adversarial/duress-*`, `docs/cross-cutting/safe-state*`, `schemas/` | Safety/security lead + independent reviewer (two-person) | CISO signs tag for policies |
+| Contract | `policies/`, `docs/contracts/` | Legal review + CISO + management approval | CISO |
+| Operational | `data/registers/` (non-OADC), `checklists/`, `templates/` | Peer review (1 reviewer minimum) | Any team member |
+| Documentation | `docs/` (non-critical) | Peer review (1 reviewer minimum) | Any team member |
+| Schema | `schemas/` | Peer + CISO (treated as structural) | CISO |
 
 ## Safety-critical change rule
 
-Any change to an OADC definition, duress protocol, safe-state specification, or H-state threshold is a safety-critical change. These require:
+Any change to an OADC definition, duress protocol, safe-state specification, or H-state threshold is a **safety-critical change**. These require:
 
-1. Joint review by safety/security lead and independent reviewer
-2. Impact analysis: what does this change affect? (CACE: changing anything changes everything)
-3. Documented blast radius assessment
-4. Two-person review sign-off
+1. Joint review by safety/security lead and independent reviewer.
+2. Impact analysis: what does this change affect? (CACE: changing anything changes everything.)
+3. Documented blast-radius assessment.
+4. Two-person review sign-off.
+
+For severe safety/integrity defects, use [GitHub Private Vulnerability Reporting](https://github.com/rmednitzer/operator-resilience/security/advisories/new); do not open a public issue — see [`.github/SECURITY.md`](.github/SECURITY.md).
 
 ## Design principles
 
@@ -148,10 +247,35 @@ Any change to an OADC definition, duress protocol, safe-state specification, or 
 7. Exercise or it does not exist.
 8. The schema is authoritative. Human-readable tables are rendered outputs, not the primary data plane.
 
-## AI-assistant guidance
+## AI-assistant rules of engagement
 
-- Treat this as a high-assurance documentation repo.
-- Correctness and traceability matter more than verbosity.
-- Do not claim a human-readable Markdown register is authoritative if a canonical YAML source exists.
-- Operator resilience controls are safety-critical — do not weaken constraints without explicit justification.
-- For regulatory cross-references, use indicative scoping language, not categorical claims.
+### Always
+
+- Treat this as a high-assurance documentation repository — correctness and traceability matter more than verbosity.
+- Edit canonical YAML sources; never the generated Markdown views.
+- After register/schema/generator changes, run `make all` and stage the regenerated Markdown alongside the source change.
+- Add new artifacts to `artifact-index.yaml` in the same commit they are introduced.
+- Use indicative scoping for regulatory cross-references; never categorical claims.
+- Preserve `DRAFT` markers on policies until the repo owner approves them.
+- Cite the source-of-truth path when summarizing register content (e.g. "per `data/registers/oadc-register.yaml`").
+
+### Never
+
+- Do not claim a generated `registers/*.md` is authoritative — the YAML under `data/registers/` is.
+- Do not weaken OADC constraints, duress protocols, safe-state definitions, or H-state thresholds without explicit, documented justification and two-person review.
+- Do not introduce categorical claims about regulatory applicability where scoping is conditional.
+- Do not bypass the pre-commit hook with `--no-verify` unless the user explicitly asks.
+- Do not push to `main` directly or self-approve safety-critical changes.
+- Do not fabricate register entries, IDs, cross-references, or sign-offs.
+- Do not include real operator names, identifiers, or other personal data in examples or templates — use `[Name]`, `[Operator-ID]`, etc.
+- Do not introduce broken Markdown links — `make validate` checks every relative link.
+
+### Definition of done for any AI-driven change
+
+- [ ] `make validate` passes locally.
+- [ ] If registers changed: `make render` run and regenerated views committed in the same commit as the YAML.
+- [ ] If a new artifact was added: entry present in `artifact-index.yaml`.
+- [ ] All cross-references resolve (`make validate` enforces this).
+- [ ] All Markdown links resolve.
+- [ ] Conventional-commit prefix applied; commit signed.
+- [ ] If safety-critical: change classified in PR description; two-person reviewer requested; impact analysis attached.
