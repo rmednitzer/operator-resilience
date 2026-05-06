@@ -1,5 +1,7 @@
 # Operator Resilience
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rmednitzer/operator-resilience)
+
 Governance-as-code for operator authority, cognition, and resilience under adversarial, degraded, and high-stress conditions.
 
 ## Purpose
