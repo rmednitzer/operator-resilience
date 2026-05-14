@@ -1,0 +1,18 @@
+Operator Resilience
+
+Copyright (c) Roman Mednitzer and contributors.
+
+This project is licensed under the MIT License. See LICENSE for terms.
+
+The Operator Resilience project produces governance-as-code artefacts for
+operator authority, cognition, and resilience under adversarial, degraded,
+and high-stress conditions. The artefacts are engineering interpretation
+and operational discipline; they are not clinical guidance, not legal
+advice, and not a substitute for human-factors qualification by competent
+authorities or trained occupational practitioners.
+
+DPIA precondition. The Operator Authority Degradation Contract (OADC),
+H-state assessment, and duress protocols process personal data including
+operator identification and cognitive-state markers. A Data Protection
+Impact Assessment under GDPR Article 35 is a precondition for operational
+use in EU contexts. See `docs/integration/regulatory-cross-reference.md`.
