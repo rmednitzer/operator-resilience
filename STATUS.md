@@ -8,6 +8,10 @@ Maturity taxonomy per `CLAUDE.md`:
 - **planned**: structure exists, content not authored
 - **draft**: content exists, not validated against external-reader gate
 - **stable**: passed external-reader gate, within review cadence
+- **n/a (canonical text)**: file is a verbatim copy of a canonical upstream
+  text (e.g. a licence, the Contributor Covenant) and is not subject to the
+  external-reader gate. Such files are exempted from the maturity
+  taxonomy because their content is governed by their upstream source.
 
 All authored content in this repository is at `draft`. Promotion to `stable`
 is conditional on running the protocol per `EXTERNAL-READER-PROTOCOL.md`.
@@ -47,16 +51,17 @@ is conditional on running the protocol per `EXTERNAL-READER-PROTOCOL.md`.
 | `CLAUDE.md` | stable | 2026-05-14 |
 | `CONTRIBUTING.md` | draft | 2026-05-14 |
 | `.github/SECURITY.md` | draft | 2026-05-14 |
-| `CODE_OF_CONDUCT.md` | draft | 2026-05-14 |
+| `CODE_OF_CONDUCT.md` | n/a (canonical text) | 2026-05-14 |
 | `GOVERNANCE.md` | draft | 2026-05-14 |
 | `LIMITATIONS.md` | draft | 2026-05-14 |
 | `EXTERNAL-READER-PROTOCOL.md` | draft | 2026-05-14 |
 | `STATUS.md` | draft | 2026-05-14 |
 | `CHANGELOG.md` | draft | 2026-05-14 |
-| `NOTICE` | stable | 2026-05-14 |
-| `LICENSE` | stable | 2026-05-14 |
+| `NOTICE` | n/a (canonical text) | 2026-05-14 |
+| `LICENSE` | n/a (canonical text) | 2026-05-14 |
 | `REUSE.toml` | draft | 2026-05-14 |
-| `LICENSES/MIT.txt` | stable | 2026-05-14 |
+| `LICENSES/Apache-2.0.txt` | n/a (canonical text) | 2026-05-14 |
+| `LICENSES/CC-BY-4.0.txt` | n/a (canonical text) | 2026-05-14 |
 | `.github/workflows/validate.yml` | draft | 2026-05-14 |
 | `.github/workflows/scorecard.yml` | draft | 2026-05-14 |
 | `.github/workflows/dco.yml` | draft | 2026-05-14 |

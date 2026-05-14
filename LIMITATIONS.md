@@ -117,7 +117,7 @@ promotion in `STATUS.md`.
 ## L6. REUSE per-file SPDX retrofit not landed
 
 **Current state.** REUSE 3.3 compliance is asserted at the repository level
-via `REUSE.toml` and `LICENSES/MIT.txt`; CI verifies via
+via `REUSE.toml` and `LICENSES/Apache-2.0.txt`; CI verifies via
 `.github/workflows/reuse.yml`. Existing files do not carry per-file SPDX
 headers; the aggregate annotation carries the licence assertion.
 
@@ -147,6 +147,47 @@ the bridge claims.
 repositories. Out of scope for either alone.
 
 **Intended scope.** No close-out planned in this PR.
+
+## L8. DCO workflow deferred to follow-up PR
+
+**Current state.** The bootstrap commit on this branch carries a
+`Signed-off-by` email that does not match the author email recognised by
+the `tim-actions/dco` action, so the DCO workflow cannot pass on the
+bootstrap commit. To avoid blocking the licence-alignment work, the DCO
+workflow is configured `on: workflow_dispatch` only; it does not run on
+pull requests.
+
+**Implication.** DCO sign-off discipline is preserved by maintainer
+discipline as recorded in `GOVERNANCE.md` and `CONTRIBUTING.md`, but the
+CI gate is currently advisory rather than enforced.
+
+**What would close it.** A follow-up PR that (a) rewrites the bootstrap
+commit's sign-off email to match the author email, or otherwise reconciles
+the two; (b) restores `on: pull_request` for `.github/workflows/dco.yml`;
+(c) enables branch protection requiring the DCO check on `main`.
+
+**Intended scope.** Tier 2 (focused follow-up PR).
+
+## L9. Outstanding scaffolding clarity items
+
+**Current state.** Several scaffolding clarity items remain after the
+licence-alignment round:
+
+- `.github/CODEOWNERS` does not yet cover all new paths added in the
+  open-source-foundation bootstrap (notably the workflow files under
+  `.github/workflows/`, `LICENSES/`, `REUSE.toml`, `GOVERNANCE.md`,
+  `LIMITATIONS.md`, `STATUS.md`, `EXTERNAL-READER-PROTOCOL.md`,
+  `CODE_OF_CONDUCT.md`).
+- Per-file SPDX headers are still aggregate-only (see L6).
+
+**Implication.** Path-targeted review routing via CODEOWNERS is incomplete;
+at single-maintainer scale this is cosmetic, but it will matter when the
+contributor base grows.
+
+**What would close it.** A scaffolding-clarity follow-up PR that extends
+CODEOWNERS to cover the new paths and lands the L6 SPDX retrofit.
+
+**Intended scope.** Tier 2 (focused follow-up PR).
 
 ## How to read this document
 

@@ -11,16 +11,22 @@ SPDX-PackageDownloadLocation = "https://github.com/rmednitzer/operator-resilienc
 path = "**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "Copyright (c) Roman Mednitzer and contributors"
-SPDX-License-Identifier = "MIT"
+SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
 path = ["LICENSE", "NOTICE"]
 precedence = "override"
 SPDX-FileCopyrightText = "Copyright (c) Roman Mednitzer and contributors"
-SPDX-License-Identifier = "MIT"
+SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
 path = "CLAUDE.md"
 precedence = "override"
 SPDX-FileCopyrightText = "Copyright (c) Roman Mednitzer and contributors"
-SPDX-License-Identifier = "MIT"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "CODE_OF_CONDUCT.md"
+precedence = "override"
+SPDX-FileCopyrightText = "Copyright (c) 2020 The Contributor Covenant"
+SPDX-License-Identifier = "CC-BY-4.0"

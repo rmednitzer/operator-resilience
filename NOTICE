@@ -2,7 +2,9 @@ Operator Resilience
 
 Copyright (c) Roman Mednitzer and contributors.
 
-This project is licensed under the MIT License. See LICENSE for terms.
+This project is licensed under the Apache License 2.0. See LICENSE for terms.
+
+Maintainer contact: Roman Mednitzer <r.mednitzer@outlook.com>
 
 The Operator Resilience project produces governance-as-code artefacts for
 operator authority, cognition, and resilience under adversarial, degraded,

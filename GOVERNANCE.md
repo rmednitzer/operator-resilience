@@ -10,7 +10,8 @@ and is not, so external contributors can calibrate expectations.
 ## Maintainer authority
 
 The repository has one maintainer. The maintainer is named in `NOTICE` and
-is the owner under `.github/CODEOWNERS`. The maintainer holds final
+is the primary reviewer under `.github/CODEOWNERS`; CODEOWNERS may be
+expanded as the contributor base grows. The maintainer holds final
 authority on:
 
 - merging pull requests into `main`;
@@ -63,8 +64,8 @@ External contributors are welcome under the discipline encoded in
 ## Escalation
 
 Disputes that cannot be resolved in issues escalate to email to the
-maintainer at the address in `NOTICE`. There is no committee, no board,
-no foundation.
+maintainer at Roman Mednitzer <r.mednitzer@outlook.com>. There is no
+committee, no board, no foundation.
 
 ## Code of conduct
 
@@ -81,7 +82,9 @@ recipient.
 
 At the current scale the maintainer commits to:
 
-- responding to security disclosures within 7 calendar days;
+- acknowledging security disclosures within 5 business days, with initial
+  triage and severity classification within 10 business days, per
+  `.github/SECURITY.md`;
 - recording material changes in `CHANGELOG.md`;
 - preserving the operating contract's discipline.
 
@@ -93,9 +96,10 @@ The maintainer does not commit to:
 
 ## License
 
-The repository content is licensed under the MIT License. By contributing
-you certify under the Developer Certificate of Origin and license your
-contribution under the same MIT terms.
+The repository content is licensed under the Apache License 2.0
+(`LICENSES/Apache-2.0.txt`). By contributing you certify under the
+Developer Certificate of Origin and license your contribution under the
+same Apache-2.0 terms.
 
 ## Updating this document
 
