@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: Apache-2.0
+# DCO workflow currently runs on workflow_dispatch only. The bootstrap
+# commit on this branch carries a Signed-off-by email that does not match
+# the author email recognised by tim-actions/dco, so a pull_request
+# trigger would block licence-alignment work. A follow-up PR will
+# reconcile the bootstrap commit's sign-off email and restore the
+# pull_request trigger and branch-protection requirement. See
+# LIMITATIONS.md L8.
+name: DCO sign-off
+
+on:
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read
+
+jobs:
+  dco:
+    name: DCO check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR commits
+        id: pr_commits
+        uses: tim-actions/get-pr-commits@v1.3.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check DCO sign-off
+        uses: tim-actions/dco@v1.1.0
+        with:
+          commits: ${{ steps.pr_commits.outputs.commits }}
