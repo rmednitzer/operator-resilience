@@ -82,4 +82,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the review process, commit convention
 
 ## License
 
-[MIT](LICENSE)
+[Apache-2.0](LICENSE)
