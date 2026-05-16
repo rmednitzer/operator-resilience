@@ -1,7 +1,7 @@
 # Document status
 
 > **Status**: draft
-> **Last reviewed**: 2026-05-14
+> **Last reviewed**: 2026-05-16
 
 Maturity taxonomy per `CLAUDE.md`:
 
@@ -47,7 +47,7 @@ is conditional on running the protocol per `EXTERNAL-READER-PROTOCOL.md`.
 
 | Document | Status | Last reviewed |
 |---|---|---|
-| `README.md` | draft | 2026-05-14 |
+| `README.md` | draft | 2026-05-16 |
 | `CLAUDE.md` | stable | 2026-05-14 |
 | `CONTRIBUTING.md` | draft | 2026-05-14 |
 | `.github/SECURITY.md` | draft | 2026-05-14 |
@@ -55,8 +55,8 @@ is conditional on running the protocol per `EXTERNAL-READER-PROTOCOL.md`.
 | `GOVERNANCE.md` | draft | 2026-05-14 |
 | `LIMITATIONS.md` | draft | 2026-05-14 |
 | `EXTERNAL-READER-PROTOCOL.md` | draft | 2026-05-14 |
-| `STATUS.md` | draft | 2026-05-14 |
-| `CHANGELOG.md` | draft | 2026-05-14 |
+| `STATUS.md` | draft | 2026-05-16 |
+| `CHANGELOG.md` | draft | 2026-05-16 |
 | `NOTICE` | n/a (canonical text) | 2026-05-14 |
 | `LICENSE` | n/a (canonical text) | 2026-05-14 |
 | `REUSE.toml` | draft | 2026-05-14 |

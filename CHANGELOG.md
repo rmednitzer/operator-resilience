@@ -1,7 +1,7 @@
 # Changelog
 
 > **Status**: draft
-> **Last reviewed**: 2026-05-14
+> **Last reviewed**: 2026-05-16
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This repository is documentation rather than a versioned product; material
@@ -65,6 +65,10 @@ changes are dated rather than versioned.
 - `CODE_OF_CONDUCT.md` Enforcement section now lists a direct email
   (`r.mednitzer@outlook.com`) rather than chaining through
   `.github/SECURITY.md` and `NOTICE`.
+- `README.md` licence footer corrected from MIT to Apache-2.0 to match the
+  canonical `LICENSE`; the bootstrap licence-migration entry above did not
+  cover `README.md`. `STATUS.md` `Last reviewed` cells updated per the
+  "Updating this document" bookkeeping rule.
 
 ### Notes
 
